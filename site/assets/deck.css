@@ -1,0 +1,144 @@
+/* 教學簡報樣式。舞台固定 1280×720，再用 transform 等比縮放到視窗，所以排版只需要對這個尺寸負責。 */
+:root {
+  --paper: #f5f1e8;
+  --paper-2: #ebe5d6;
+  --card: #fbf9f4;
+  --ink: #1c2230;
+  --ink-2: #4b5364;
+  --line: #cfc7b4;
+  --accent: #0d6b62;
+  --accent-ink: #084a44;
+  --signal: #c8501a;
+  --mark: #f3d46b;
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: #14181f; color: var(--ink); font-family: var(--sans); overflow: hidden; -webkit-font-smoothing: antialiased; }
+.viewport { position: fixed; inset: 0 0 52px 0; display: grid; place-items: center; overflow: hidden; }
+.stage { width: 1280px; height: 720px; position: relative; flex: none; transform-origin: center center; background: var(--paper); box-shadow: 0 20px 60px rgba(0, 0, 0, .45); }
+.slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 56px 72px 0; }
+.slide.active { display: flex; }
+.slide-inner { flex: 1 1 auto; height: 606px; overflow: hidden; display: flex; flex-direction: column; font-size: 26px; line-height: 1.6; }
+.slide-foot { flex: none; height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.foot-refs { display: flex; align-items: center; gap: 8px; overflow: hidden; white-space: nowrap; flex: 1 1 auto; min-width: 0; }
+.foot-more { font-family: var(--mono); font-size: 12px; }
+.foot-label { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; }
+.foot-refs a { color: var(--accent-ink); text-decoration: none; background: var(--paper-2); padding: 3px 10px; border-radius: 999px; }
+.foot-refs a:hover { background: var(--mark); }
+.foot-no { font-family: var(--mono); font-size: 13px; flex: none; white-space: nowrap; }
+
+/* ---- 共用文字 ---- */
+.slide h1 { font-family: var(--serif); font-weight: 900; font-size: 46px; line-height: 1.25; margin: 0 0 22px; letter-spacing: .01em; }
+.slide h2 { font-family: var(--mono); font-weight: 600; font-size: 15px; letter-spacing: .1em; color: var(--signal); margin: 0 0 10px; text-transform: uppercase; }
+.slide h3 { font-family: var(--serif); font-size: 26px; margin: 0 0 6px; }
+.slide p { margin: 0 0 16px; }
+.slide ul, .slide ol { margin: 0 0 16px; padding-left: 1.15em; }
+.slide li { margin-bottom: 12px; padding-left: 4px; }
+.slide li::marker { color: var(--signal); font-weight: 700; }
+.slide strong { background: linear-gradient(transparent 60%, var(--mark) 60%); font-weight: 700; }
+.slide em { font-style: normal; color: var(--signal); font-weight: 700; }
+.slide a { color: var(--accent-ink); }
+.slide code { font-family: var(--mono); font-size: .86em; background: var(--paper-2); padding: 1px 7px; border-radius: 5px; }
+.slide pre { margin: 0 0 16px; background: var(--ink); color: #ece8dc; padding: 20px 24px; border-radius: 12px; font-size: 19px; line-height: 1.7; overflow: hidden; }
+.slide pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+.slide table { border-collapse: collapse; width: 100%; font-size: 24px; line-height: 1.5; margin: 0 0 18px; }
+.slide th { text-align: left; font-family: var(--mono); font-size: 14px; letter-spacing: .06em; color: var(--ink-2); border-bottom: 2px solid var(--ink); padding: 8px 12px; }
+.slide td { border-bottom: 1px solid var(--line); padding: 13px 12px; vertical-align: top; }
+.slide td:first-child { font-family: var(--serif); font-weight: 600; white-space: nowrap; }
+.cite { font-family: var(--mono); font-size: 13px; text-decoration: none; background: var(--paper-2); color: var(--signal) !important; padding: 2px 8px; border-radius: 999px; white-space: nowrap; vertical-align: 3px; }
+.slide blockquote { margin: 0 0 16px; padding: 14px 22px; border-left: 5px solid var(--accent); background: var(--card); font-size: 23px; }
+.slide blockquote p:last-child { margin: 0; }
+.diagram { margin: 0 0 8px; flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.diagram svg { max-width: 100%; max-height: 100%; width: auto; height: 100%; font-family: var(--sans); }
+
+/* ---- 版型 ---- */
+.layout-title { background: var(--ink); color: var(--paper); }
+.layout-title .slide-inner { justify-content: center; }
+.layout-title h1 { font-size: 84px; line-height: 1.12; margin-bottom: 26px; }
+.layout-title h2 { color: var(--mark); font-size: 17px; margin-bottom: 22px; }
+.layout-title p { font-size: 28px; color: #c9c4b6; max-width: 26em; }
+.layout-title .slide-foot { border-color: #3a4152; color: #9aa1b0; }
+.layout-title strong { background: none; color: var(--mark); }
+
+.layout-objectives ol { list-style: none; padding: 0; counter-reset: obj; display: grid; gap: 14px; margin-top: 6px; }
+.layout-objectives ol li { counter-increment: obj; display: grid; grid-template-columns: 62px 1fr; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 24px 16px 0; margin: 0; }
+.layout-objectives ol li::before { content: counter(obj); font-family: var(--serif); font-weight: 900; font-size: 34px; color: var(--signal); text-align: center; }
+
+.layout-big .slide-inner { justify-content: center; }
+.layout-big h1 { font-size: 58px; line-height: 1.3; max-width: 17em; }
+.layout-big p { font-size: 28px; color: var(--ink-2); max-width: 30em; }
+
+.layout-compare table td { width: 50%; }
+.layout-compare table td:first-child { white-space: normal; }
+.layout-cards ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 4px; }
+.layout-cards ul li { background: var(--card); border: 1px solid var(--line); border-top: 5px solid var(--accent); border-radius: 12px; padding: 26px 24px 30px; margin: 0; font-size: 23px; line-height: 1.6; }
+.layout-cards ul li strong { display: block; background: none; font-family: var(--serif); font-size: 32px; margin-bottom: 10px; }
+.layout-cards.cols-2 ul { grid-template-columns: repeat(2, 1fr); }
+
+.layout-diagram .slide-inner { font-size: 22px; }
+.layout-diagram h1 { margin-bottom: 10px; font-size: 40px; }
+.layout-diagram p { margin-bottom: 8px; }
+
+.layout-trace pre { font-size: 20px; }
+.layout-trace .hl { color: var(--mark); }
+
+.layout-quiz { background: var(--paper-2); }
+.layout-quiz h1 { font-size: 40px; }
+.layout-quiz ol { list-style: upper-alpha; }
+.layout-quiz blockquote { border-left-color: var(--signal); background: var(--card); position: relative; }
+.layout-quiz blockquote.hidden > * { visibility: hidden; }
+.layout-quiz blockquote.hidden { cursor: pointer; }
+.layout-quiz blockquote.hidden::after { content: "點一下看答案"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 18px; color: var(--signal); letter-spacing: .08em; }
+
+.layout-recap ol { counter-reset: r; list-style: none; padding: 0; display: grid; gap: 12px; }
+.layout-recap ol li { counter-increment: r; display: grid; grid-template-columns: 54px 1fr; align-items: baseline; border-bottom: 1px dashed var(--line); padding-bottom: 12px; margin: 0; }
+.layout-recap ol li::before { content: "0" counter(r); font-family: var(--mono); font-size: 17px; color: var(--signal); }
+
+.layout-sources .slide-inner { font-size: 20px; }
+.layout-sources ul { list-style: none; padding: 0; }
+.layout-sources li { border-bottom: 1px dashed var(--line); padding-bottom: 9px; margin-bottom: 9px; }
+
+/* ---- 圖（與 style.css 共用同一組 class） ---- */
+.d-box { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.d-soft { fill: var(--paper-2); stroke: var(--line); stroke-width: 1.5; }
+.d-accent { fill: var(--accent); stroke: var(--accent); }
+.d-signal { fill: var(--signal); stroke: var(--signal); }
+.d-mark { fill: var(--mark); stroke: var(--ink); stroke-width: 2; }
+.d-line { fill: none; stroke: var(--ink); stroke-width: 2; }
+.d-back { fill: none; stroke: var(--signal); stroke-width: 2; stroke-dasharray: 6 5; }
+.d-dash { fill: none; stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 4 5; }
+.d-t { font-size: 17px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+.d-s { font-size: 13px; fill: var(--ink-2); text-anchor: middle; }
+.d-w { font-size: 17px; font-weight: 700; fill: #fff; text-anchor: middle; }
+.d-ws { font-size: 13px; fill: #fff; text-anchor: middle; opacity: .9; }
+.d-o { font-size: 13px; fill: var(--signal); text-anchor: middle; font-weight: 700; }
+.d-m { font-family: var(--mono); font-size: 12px; fill: var(--ink-2); text-anchor: middle; }
+.d-l { text-anchor: start; }
+.d-arrow { fill: var(--ink); }
+.d-arrow-o { fill: var(--signal); }
+
+/* ---- 控制列 ---- */
+.controls { position: fixed; left: 0; right: 0; bottom: 0; height: 52px; display: flex; align-items: center; gap: 14px; padding: 0 18px; background: #0e1116; color: #c9c4b6; font-family: var(--mono); font-size: 13px; }
+.ctl { background: none; border: 1px solid #3a4152; color: #e9e5da; border-radius: 999px; height: 34px; min-width: 34px; padding: 0 12px; font: inherit; font-size: 18px; cursor: pointer; text-decoration: none; display: inline-grid; place-items: center; }
+.ctl.home { font-size: 13px; }
+.ctl:hover { border-color: var(--mark); color: var(--mark); }
+.ctl:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+.progress { flex: 1; height: 4px; background: #2a303c; border-radius: 2px; overflow: hidden; }
+.progress span { display: block; height: 100%; width: 0; background: var(--signal); transition: width .25s; }
+.count { min-width: 64px; text-align: center; }
+.hint { color: #8d94a3; font-size: 12px; white-space: nowrap; transition: opacity .5s; }
+.hint.gone { opacity: 0; }
+
+@media (max-width: 640px) { .hint { display: none; } }
+@media print {
+  body { overflow: visible; background: #fff; }
+  .viewport { position: static; display: block; }
+  .stage { transform: none !important; box-shadow: none; height: auto; }
+  .slide { position: relative; display: flex !important; height: 720px; page-break-after: always; }
+  .controls { display: none; }
+  .layout-quiz blockquote.hidden > * { visibility: visible; }
+  .layout-quiz blockquote.hidden::after { display: none; }
+}

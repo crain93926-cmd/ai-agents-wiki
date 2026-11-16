@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>討論：OpenAI〈A practical guide to building agents〉 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-discussion">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-discussion">討論紀錄</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>討論：OpenAI〈A practical guide to building agents〉</h1>
+    <p class="summary">讀入 OpenAI 2025 年 agent 實務指南之前的重點提案</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <h2>這篇的重點</h2>
+<ol>
+<li>定義：agent 是「代替使用者獨立完成任務」的系統，由 LLM 管理流程。</li>
+<li>適合做 agent 的三類流程：複雜判斷、規則難維護、非結構化資料。</li>
+<li>三個核心元件：模型、工具、指示。</li>
+<li>工具分三種：資料、行動、協調。</li>
+<li>多 agent 兩種模式：manager、handoff；但建議先把單一 agent 用到極限。</li>
+<li>護欄要多層；失敗太多次或高風險動作要交給真人。</li>
+</ol>
+<h2>預計新增的頁面</h2>
+<ul>
+<li><a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a>：來源頁</li>
+<li><a href="multi-agent.html">多個 agent 一起工作</a>：多個 agent 怎麼合作</li>
+<li><a href="guardrails.html">護欄與人類把關</a>：護欄與人類把關</li>
+</ul>
+<h2>預計更新的頁面</h2>
+<ul>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：加上 OpenAI 的定義，和前兩篇並列</li>
+<li><a href="tools.html">工具：讓模型能動手</a>：加上三種工具的分類</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：加上四種離開條件</li>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：加上「哪三類流程適合 agent」</li>
+</ul>
+<h2>和既有內容的關係</h2>
+<ul>
+<li>用詞差異：<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a> 嚴格區分 workflow 與 agent；這篇把 agent 要處理的任務本身稱為 workflow。這不是事實上的矛盾，但初學者容易混淆，要在 <a href="what-is-an-agent.html">AI agent 是什麼</a> 說明。</li>
+<li>一致：兩篇都建議從簡單開始、需要時才增加複雜度。</li>
+<li>零件的說法有三種了：Weng 的「規劃、記憶、工具」、Anthropic 的「檢索、工具、記憶」、這篇的「模型、工具、指示」。三種都保留。</li>
+</ul>
+<h2>想問人的問題</h2>
+<ul>
+<li>護欄列了七種，入門簡報要講幾種？提案：Wiki 列全部，簡報只講「多層」的觀念和人類把關的兩個時機。</li>
+</ul>
+<h2>決定</h2>
+<ul>
+<li>2026-11-16：沿用授權範圍，由 AI 提案後直接採用。用詞差異在定義頁明確說明。</li>
+</ul>
+    </div>
+    <aside class="side">
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

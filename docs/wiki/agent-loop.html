@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent 循環：想、做、看 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 3 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>Agent 循環：想、做、看</h1>
+    <p class="summary">Agent 不是一次回答完，而是重複「想 → 做 → 看結果」直到完成。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>一般的聊天是「問一句、答一句」。Agent 的做事方式比較像煮一道沒煮過的菜：看食譜、做一步、嚐味道、再決定下一步。</p>
+<h2>基本形狀</h2>
+<p>循環有三步：先想下一步要做什麼，再實際去做，然後看做出來的結果。看完之後回到第一步，根據新的結果再想一次。這個「想法 → 行動 → 觀察」的寫法最早由 <a href="react.html">ReAct：邊想邊做</a> 清楚地提出。<a class="cite" href="src-react.html" title="ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）">ReAct 2022</a></p>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-label="Agent 循環：從目標出發，重複想、做、看，直到符合停止條件"> <defs><marker id="agent-loop-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="agent-loop-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-mark" x="30" y="150" width="170" height="80" rx="12"/> <text class="d-t" x="115" y="186" style="font-size:20px">目標</text> <text class="d-s" x="115" y="211">人交代的任務</text> <path class="d-line" d="M200 190 L268 190" marker-end="url(#agent-loop-ar)"/> <rect class="d-accent" x="270" y="140" width="180" height="100" rx="14"/> <text class="d-w" x="360" y="184" style="font-size:26px">想</text> <text class="d-ws" x="360" y="212">決定下一步</text> <rect class="d-box" x="560" y="40" width="200" height="90" rx="12"/> <text class="d-t" x="660" y="82" style="font-size:26px">做</text> <text class="d-s" x="660" y="108">使用工具</text> <rect class="d-box" x="560" y="250" width="200" height="90" rx="12"/> <text class="d-t" x="660" y="292" style="font-size:26px">看</text> <text class="d-s" x="660" y="318">讀取真實結果</text> <path class="d-line" d="M450 165 L558 96" marker-end="url(#agent-loop-ar)"/> <path class="d-line" d="M660 130 L660 248" marker-end="url(#agent-loop-ar)"/> <path class="d-line" d="M560 295 L452 216" marker-end="url(#agent-loop-ar)"/> <text class="d-o" x="850" y="186">重複很多輪</text> <text class="d-s" x="850" y="208">直到可以停</text> <path class="d-back" d="M360 240 L360 298" marker-end="url(#agent-loop-aro)"/> <rect class="d-soft" x="215" y="300" width="290" height="70" rx="12"/> <text class="d-t" x="360" y="330">停下來：完成，或交還給人</text> <text class="d-s" x="360" y="354">任務完成・達到回合上限・需要人確認</text> </svg> </figure>
+
+<h2>每一步都要看到真實結果</h2>
+<p>Agent 可以說是「在迴圈裡根據環境回饋使用工具的 LLM」。關鍵在回饋：每做一步，都要從環境拿到<strong>真實的結果</strong>（例如工具回傳的內容、程式執行的輸出），才能判斷有沒有進展。只靠模型自己想像結果，錯誤會越滾越大。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>什麼時候停</h2>
+<p>循環通常在任務完成時結束。實務上還會另外設定停止條件，例如最多跑幾輪，避免停不下來。Agent 也可以在預先設好的檢查點、或是自己卡住的時候暫停，回頭問人。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<p>OpenAI 的指南列了四種離開迴圈的條件：呼叫了代表「最終輸出」的工具、模型回覆時沒有再呼叫任何工具、發生錯誤、達到最大回合數。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="react.html">ReAct：邊想邊做</a>：這個循環的原型</li>
+<li><a href="tools.html">工具：讓模型能動手</a>：循環中「做」這一步靠的是工具</li>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：循環由模型主導時才叫 agent</li>
+<li><a href="guardrails.html">護欄與人類把關</a>：停下來交給人的時機</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-react.html">ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</a><span class="muted">ReAct 2022</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#2">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#2">2</a>、<a href="../slides/ai-agents-101/index.html#3">3</a>、<a href="../slides/ai-agents-101/index.html#7">7</a>、<a href="../slides/ai-agents-101/index.html#8">8</a>、<a href="../slides/ai-agents-101/index.html#9">9</a>、<a href="../slides/ai-agents-101/index.html#10">10</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="src-react.html">ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</a></li>
+          <li><a href="react.html">ReAct：邊想邊做</a></li>
+          <li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+          <li><a href="guardrails.html">護欄與人類把關</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="augmented-llm.html"><span>上一站</span>基本積木：加了配備的 LLM</a><a class="next" href="react.html"><span>下一站</span>ReAct：邊想邊做</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

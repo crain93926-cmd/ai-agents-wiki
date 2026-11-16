@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI agent 是什麼 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 1 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>AI agent 是什麼</h1>
+    <p class="summary">一個以語言模型為大腦，能自己規劃、使用工具、記住事情來完成任務的系統。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>AI agent（代理）可以想成一位「會自己想辦法把事情做完的助理」。你交代目標，它自己決定步驟、去查資料、用工具，而不是只回你一段話。</p>
+<h2>大腦加三個零件</h2>
+<p>一個常見的說法是：把大型語言模型（LLM）當成 agent 的大腦，再配上三個零件。<strong>規劃</strong>讓它把大任務拆成小步驟並檢討修正，記憶讓它記得做過什麼、需要時查得到舊資料，工具讓它能取得模型本身沒有的資訊或能力。<a class="cite" href="src-weng-agents.html" title="Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）">Weng 2023</a></p>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-label="Agent 的組成：LLM 是大腦，配上規劃、記憶、工具三個零件"> <defs><marker id="agent-parts-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="agent-parts-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <path class="d-line" d="M290 85 L380 145"/> <path class="d-line" d="M290 255 L380 195"/> <path class="d-line" d="M580 170 L670 170"/> <rect class="d-accent" x="380" y="120" width="200" height="100" rx="14"/> <text class="d-w" x="480" y="165" style="font-size:24px">LLM</text> <text class="d-ws" x="480" y="193">大腦：理解、判斷、決定</text> <rect class="d-box" x="60" y="40" width="230" height="90" rx="12"/> <text class="d-t" x="175" y="80" style="font-size:20px">規劃</text> <text class="d-s" x="175" y="106">拆解任務・反思修正</text> <rect class="d-box" x="60" y="210" width="230" height="90" rx="12"/> <text class="d-t" x="175" y="250" style="font-size:20px">記憶</text> <text class="d-s" x="175" y="276">短期：上下文・長期：外部資料</text> <rect class="d-box" x="670" y="125" width="230" height="90" rx="12"/> <text class="d-t" x="785" y="165" style="font-size:20px">工具</text> <text class="d-s" x="785" y="191">查資料・執行程式・操作系統</text> </svg> </figure>
+
+<h2>另一種說法：代替你獨立完成任務</h2>
+<p>OpenAI 的指南把 agent 定義為<strong>能代替使用者獨立完成任務的系統</strong>。它用 LLM 來管理流程：判斷任務什麼時候完成、必要時修正自己的行動、做不下去時把控制權交還給人；同時依照當下的狀況挑選工具來取得資訊與採取行動。這份指南列的三個核心元件是模型、工具、指示。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>「agent」這個詞有寬有窄</h2>
+<p>不同的人講 agent，指的範圍不一樣。有人指能長時間獨立運作的系統，也有人把照固定步驟執行的系統也叫 agent。Anthropic 的做法是把兩者統稱為 agentic systems，再區分成 workflow（步驟事先寫好）與 agent（模型自己決定步驟）。本站採用這個區分，細節見 <a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<p>要注意用詞：OpenAI 的指南把 agent 要完成的任務流程本身也稱為 workflow，和上面「固定流程」的意思不同。讀不同來源時要先看它怎麼定義。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="planning.html">規劃：拆解與反思</a>、<a href="memory.html">記憶：短期與長期</a>、<a href="tools.html">工具：讓模型能動手</a>：三個零件各自的說明</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：這些零件怎麼一輪一輪地運作</li>
+<li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a>：最小的積木</li>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：agent 和固定流程的差別</li>
+<li><a href="challenges.html">Agent 目前的限制</a>：目前做不好的地方</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a><span class="muted">Weng 2023</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#2">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#2">2</a>、<a href="../slides/ai-agents-101/index.html#4">4</a>、<a href="../slides/ai-agents-101/index.html#5">5</a>、<a href="../slides/ai-agents-101/index.html#10">10</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agents-md.html">AGENTS.md：給 agent 的專案說明書</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+          <li><a href="memory.html">記憶：短期與長期</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<span></span><a class="next" href="augmented-llm.html"><span>下一站</span>基本積木：加了配備的 LLM</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

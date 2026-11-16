@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models） · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-source">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-source">來源</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</h1>
+    <p class="summary">提出讓語言模型交錯「推理」與「行動」的 ReAct 做法的論文。</p>
+    <dl class="source-card">
+      <div><dt>作者</dt><dd>Shunyu Yao 等七人（Princeton University、Google Research）</dd></div>
+      <div><dt>發表</dt><dd>2022-10-06（ICLR 2023）</dd></div>
+      <div><dt>原文</dt><dd><a href="https://arxiv.org/abs/2210.03629">https://arxiv.org/abs/2210.03629</a></dd></div>
+      <div><dt>讀取日期</dt><dd>2026-11-16</dd></div>
+    </dl>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <h2>這篇在講什麼</h2>
+<p>在這篇論文之前，研究者多半把語言模型的「推理」和「行動」分開研究。作者提出 ReAct：讓模型一邊寫下想法，一邊採取行動，兩者交錯進行。</p>
+<h2>重點</h2>
+<ul>
+<li>流程是「想法 → 行動 → 觀察結果」，重複很多輪，直到任務完成。細節見 <a href="react.html">ReAct：邊想邊做</a>。</li>
+<li>行動讓模型能向外部取得新資訊；推理讓模型能擬定、追蹤並修改計畫。這就是 <a href="agent-loop.html">Agent 循環：想、做、看</a> 最早的清楚版本之一。</li>
+<li>它是一種提示方式，不需要重新訓練模型。</li>
+<li>在兩個互動式決策測試（ALFWorld、WebShop）中，絕對成功率分別比先前的方法高 34% 與 10%，而且提示中只放一到兩個範例。</li>
+<li>在問答與事實查核測試中，能查資料的 ReAct 比只靠推理的方法更不容易產生幻覺。</li>
+</ul>
+<h2>這篇資料的限制</h2>
+<ul>
+<li>2022 年的研究，數字來自當時的模型與測試，不能直接代表現在的模型。</li>
+<li>論文談的是提示方法，沒有討論安全性、成本或如何上線。</li>
+</ul>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="react.html">ReAct：邊想邊做</a>：把這篇的做法講給初學者聽</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：ReAct 所描述的循環</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#20">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#20">20</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agent-loop.html">Agent 循環：想、做、看</a></li>
+          <li><a href="react.html">ReAct：邊想邊做</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

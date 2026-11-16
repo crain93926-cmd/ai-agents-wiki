@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Agents 是什麼？ · Agent 筆記本</title>
+<meta name="description" content="能用自己的話說明 agent 是什麼、怎麼運作、什麼時候該用、要注意什麼">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/deck.css">
+</head>
+<body>
+<div class="viewport">
+  <div class="stage" id="stage">
+    <section class="slide layout-title" id="s1" aria-label="第 1 張，共 20 張">
+      <div class="slide-inner">
+        <h2>Agent 筆記本・教學簡報</h2>
+<h1>AI Agents 是什麼？</h1>
+<p>給第一次聽到這個詞的人：看懂它<strong>怎麼運作</strong>、<strong>什麼時候該用</strong>、<strong>要小心什麼</strong>。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+        </span>
+        <span class="foot-no">1 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-objectives" id="s2" aria-label="第 2 張，共 20 張">
+      <div class="slide-inner">
+        <h2>學習目標</h2>
+<h1>看完你會知道</h1>
+<ol>
+<li>Agent 和一般的聊天機器人差在哪裡</li>
+<li>Agent 怎麼一步一步把事情做完</li>
+<li>什麼時候該用 agent，什麼時候不該</li>
+<li>讓 agent 動手之前，要先準備什麼</li>
+</ol>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/what-is-an-agent.html">AI agent 是什麼</a><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a><a href="../../wiki/workflows-vs-agents.html">Workflow 與 agent 的差別</a><a href="../../wiki/guardrails.html">護欄與人類把關</a>        </span>
+        <span class="foot-no">2 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-bullets" id="s3" aria-label="第 3 張，共 20 張">
+      <div class="slide-inner">
+        <h2>從你熟悉的開始</h2>
+<h1>只會聊天的模型，有三件事做不到</h1>
+<ul>
+<li>不知道<strong>訓練之後</strong>才發生的事</li>
+<li>不能自己執行程式，也讀不到你的資料</li>
+<li>你問一句，它答一句，答完就結束</li>
+</ul>
+<p>它很會「說」，但不會「做」。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/tools.html">工具：讓模型能動手</a><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a>        </span>
+        <span class="foot-no">3 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-big" id="s4" aria-label="第 4 張，共 20 張">
+      <div class="slide-inner">
+        <h2>一句話</h2>
+<h1>Agent 是拿到目標後，會自己想辦法把事情做完的 AI 系統</h1>
+<p>你交代目標。它自己決定步驟、查資料、用工具；做不下去時，把控制權交還給你。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/what-is-an-agent.html">AI agent 是什麼</a>        </span>
+        <span class="foot-no">4 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-diagram" id="s5" aria-label="第 5 張，共 20 張">
+      <div class="slide-inner">
+        <h2>組成</h2>
+<h1>一個大腦，三個零件</h1>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-label="Agent 的組成：LLM 是大腦，配上規劃、記憶、工具三個零件"> <defs><marker id="agent-parts-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="agent-parts-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <path class="d-line" d="M290 85 L380 145"/> <path class="d-line" d="M290 255 L380 195"/> <path class="d-line" d="M580 170 L670 170"/> <rect class="d-accent" x="380" y="120" width="200" height="100" rx="14"/> <text class="d-w" x="480" y="165" style="font-size:24px">LLM</text> <text class="d-ws" x="480" y="193">大腦：理解、判斷、決定</text> <rect class="d-box" x="60" y="40" width="230" height="90" rx="12"/> <text class="d-t" x="175" y="80" style="font-size:20px">規劃</text> <text class="d-s" x="175" y="106">拆解任務・反思修正</text> <rect class="d-box" x="60" y="210" width="230" height="90" rx="12"/> <text class="d-t" x="175" y="250" style="font-size:20px">記憶</text> <text class="d-s" x="175" y="276">短期：上下文・長期：外部資料</text> <rect class="d-box" x="670" y="125" width="230" height="90" rx="12"/> <text class="d-t" x="785" y="165" style="font-size:20px">工具</text> <text class="d-s" x="785" y="191">查資料・執行程式・操作系統</text> </svg> </figure>
+
+<p>不同來源的說法略有出入，但都離不開：模型、工具、記憶，加上清楚的指示。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/what-is-an-agent.html">AI agent 是什麼</a><a href="../../wiki/augmented-llm.html">基本積木：加了配備的 LLM</a>        </span>
+        <span class="foot-no">5 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-cards" id="s6" aria-label="第 6 張，共 20 張">
+      <div class="slide-inner">
+        <h2>三個零件</h2>
+<h1>各自負責什麼</h1>
+<ul>
+<li><strong>規劃</strong> 把大任務拆成小步驟；做錯了回頭檢討、修正</li>
+<li><strong>記憶</strong> 短期是當下看得到的內容；長期存在外部，需要時查回來</li>
+<li><strong>工具</strong> 查資料、執行程式、操作其他系統，取得模型本身沒有的能力</li>
+</ul>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/planning.html">規劃：拆解與反思</a><a href="../../wiki/memory.html">記憶：短期與長期</a><a href="../../wiki/tools.html">工具：讓模型能動手</a>        </span>
+        <span class="foot-no">6 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-diagram" id="s7" aria-label="第 7 張，共 20 張">
+      <div class="slide-inner">
+        <h2>運作方式</h2>
+<h1>想 → 做 → 看，重複到可以停</h1>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-label="Agent 循環：從目標出發，重複想、做、看，直到符合停止條件"> <defs><marker id="agent-loop-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="agent-loop-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-mark" x="30" y="150" width="170" height="80" rx="12"/> <text class="d-t" x="115" y="186" style="font-size:20px">目標</text> <text class="d-s" x="115" y="211">人交代的任務</text> <path class="d-line" d="M200 190 L268 190" marker-end="url(#agent-loop-ar)"/> <rect class="d-accent" x="270" y="140" width="180" height="100" rx="14"/> <text class="d-w" x="360" y="184" style="font-size:26px">想</text> <text class="d-ws" x="360" y="212">決定下一步</text> <rect class="d-box" x="560" y="40" width="200" height="90" rx="12"/> <text class="d-t" x="660" y="82" style="font-size:26px">做</text> <text class="d-s" x="660" y="108">使用工具</text> <rect class="d-box" x="560" y="250" width="200" height="90" rx="12"/> <text class="d-t" x="660" y="292" style="font-size:26px">看</text> <text class="d-s" x="660" y="318">讀取真實結果</text> <path class="d-line" d="M450 165 L558 96" marker-end="url(#agent-loop-ar)"/> <path class="d-line" d="M660 130 L660 248" marker-end="url(#agent-loop-ar)"/> <path class="d-line" d="M560 295 L452 216" marker-end="url(#agent-loop-ar)"/> <text class="d-o" x="850" y="186">重複很多輪</text> <text class="d-s" x="850" y="208">直到可以停</text> <path class="d-back" d="M360 240 L360 298" marker-end="url(#agent-loop-aro)"/> <rect class="d-soft" x="215" y="300" width="290" height="70" rx="12"/> <text class="d-t" x="360" y="330">停下來：完成，或交還給人</text> <text class="d-s" x="360" y="354">任務完成・達到回合上限・需要人確認</text> </svg> </figure>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a>        </span>
+        <span class="foot-no">7 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-trace" id="s8" aria-label="第 8 張，共 20 張">
+      <div class="slide-inner">
+        <h2>示意：請 agent 判斷今天要不要帶傘</h2>
+<h1>把心裡的話寫出來：ReAct</h1>
+<pre><code>想法　我需要知道今天下午會不會下雨
+行動　呼叫「天氣查詢」工具（地點：台北）
+觀察　下午降雨機率偏高
+想法　資訊夠了，可以回答
+回答　下午很可能下雨，記得帶傘
+</code></pre>
+<p>這是自編的示意。重點：每個「想法」都根據上一步真實的「觀察」。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/react.html">ReAct：邊想邊做</a><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a>        </span>
+        <span class="foot-no">8 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-bullets" id="s9" aria-label="第 9 張，共 20 張">
+      <div class="slide-inner">
+        <h2>循環的兩個關鍵</h2>
+<h1>看到真實結果，並且知道何時停</h1>
+<ul>
+<li>每做一步都要拿到<strong>真實的結果</strong>，不能靠模型自己想像</li>
+<li>停止條件事先設好：任務完成、達到回合上限、發生錯誤</li>
+<li>卡住或到了檢查點，就停下來問人</li>
+<li>ReAct 在 2022 年的兩個決策測試中，絕對成功率比先前的方法高 34% 與 10%</li>
+</ul>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a><a href="../../wiki/react.html">ReAct：邊想邊做</a>        </span>
+        <span class="foot-no">9 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-quiz" id="s10" aria-label="第 10 張，共 20 張">
+      <div class="slide-inner">
+        <h2>小測驗 1</h2>
+<h1>下面哪一個最像 agent？</h1>
+<ol>
+<li>你問「台北到高雄多遠」，模型直接回答</li>
+<li>你說「幫我訂下週去高雄最便宜的車票」，系統自己查班次、比價，訂票前先問你</li>
+<li>程式每天早上固定把新聞標題寄給你</li>
+</ol>
+<blockquote>
+<p>答案是 B。它拿到的是目標，自己決定步驟並使用工具，重要動作前會停下來問人。A 是一次問答，C 是寫死的排程。</p>
+</blockquote>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/what-is-an-agent.html">AI agent 是什麼</a><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a><a href="../../wiki/guardrails.html">護欄與人類把關</a>        </span>
+        <span class="foot-no">10 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-diagram" id="s11" aria-label="第 11 張，共 20 張">
+      <div class="slide-inner">
+        <h2>不是什麼都要用 agent</h2>
+<h1>差別在：誰決定下一步</h1>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="Workflow 的路徑由程式事先寫好；Agent 的路徑由模型自己決定"> <defs><marker id="workflow-vs-agent-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="workflow-vs-agent-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-soft" x="20" y="20" width="440" height="320" rx="16"/> <text class="d-t" x="240" y="62" style="font-size:22px">Workflow（固定流程）</text> <text class="d-o" x="240" y="90">下一步由「程式」決定</text> <rect class="d-box" x="50" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="105" y="188">步驟 1</text> <rect class="d-box" x="185" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="240" y="188">步驟 2</text> <rect class="d-box" x="320" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="375" y="188">步驟 3</text> <path class="d-line" d="M160 182 L183 182" marker-end="url(#workflow-vs-agent-ar)"/> <path class="d-line" d="M295 182 L318 182" marker-end="url(#workflow-vs-agent-ar)"/> <text class="d-s" x="240" y="278">每次都走同一條路</text> <text class="d-s" x="240" y="300">結果比較可預測</text> <rect class="d-soft" x="500" y="20" width="440" height="320" rx="16"/> <text class="d-t" x="720" y="62" style="font-size:22px">Agent</text> <text class="d-o" x="720" y="90">下一步由「模型」決定</text> <rect class="d-accent" x="660" y="125" width="120" height="70" rx="12"/> <text class="d-w" x="720" y="167" style="font-size:20px">LLM</text> <path class="d-line" d="M780 142 C 858 112, 858 208, 784 180" marker-end="url(#workflow-vs-agent-ar)"/> <text class="d-s" x="878" y="136">看結果</text> <text class="d-s" x="878" y="156">再決定</text> <path class="d-dash" d="M700 195 L575 238"/> <path class="d-dash" d="M720 195 L720 238"/> <path class="d-dash" d="M740 195 L865 238"/> <rect class="d-box" x="520" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="575" y="269">工具 A</text> <rect class="d-box" x="665" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="720" y="269">工具 B</text> <rect class="d-box" x="810" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="865" y="269">工具 C</text> <text class="d-s" x="720" y="318">每次走的路可能不同，比較有彈性</text> </svg> </figure>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/workflows-vs-agents.html">Workflow 與 agent 的差別</a>        </span>
+        <span class="foot-no">11 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-compare" id="s12" aria-label="第 12 張，共 20 張">
+      <div class="slide-inner">
+        <h2>怎麼選</h2>
+<h1>先用最簡單的做法</h1>
+<table>
+<thead>
+<tr>
+<th>適合固定流程（workflow）</th>
+<th>適合 agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>步驟明確，可以事先寫好</td>
+<td>需要複雜的臨場判斷</td>
+</tr>
+<tr>
+<td>希望結果穩定、可預測</td>
+<td>規則多到難以維護</td>
+</tr>
+<tr>
+<td>在意成本與等待時間</td>
+<td>資料是文件、對話這類非結構化內容</td>
+</tr>
+</tbody>
+</table>
+<p>Agent 是拿<strong>更多時間與成本</strong>去換表現。很多需求一次模型呼叫加上檢索就夠了。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/workflows-vs-agents.html">Workflow 與 agent 的差別</a><a href="../../wiki/challenges.html">Agent 目前的限制</a>        </span>
+        <span class="foot-no">12 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-bullets" id="s13" aria-label="第 13 張，共 20 張">
+      <div class="slide-inner">
+        <h2>固定流程也有很多種</h2>
+<h1>五種 workflow 模式</h1>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>一句話</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>串接</td>
+<td>拆成依序的幾步，中間可以加檢查</td>
+</tr>
+<tr>
+<td>分流</td>
+<td>先分類，再交給專門的處理方式</td>
+</tr>
+<tr>
+<td>平行</td>
+<td>同時做很多份，再彙整</td>
+</tr>
+<tr>
+<td>指揮分工</td>
+<td>一個中央模型拆任務、分派、整合</td>
+</tr>
+<tr>
+<td>評分修正</td>
+<td>一個產出，一個評分，反覆修改</td>
+</tr>
+</tbody>
+</table>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/workflow-patterns.html">五種 workflow 模式</a>        </span>
+        <span class="foot-no">13 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-diagram" id="s14" aria-label="第 14 張，共 20 張">
+      <div class="slide-inner">
+        <h2>工具怎麼接上來</h2>
+<h1>MCP：AI 應用的共通插頭</h1>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="MCP 的三個角色：Host 內有多個 client，每個 client 連到一個 server"> <defs><marker id="mcp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="mcp-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-soft" x="20" y="30" width="430" height="300" rx="16"/> <text class="d-t" x="235" y="68" style="font-size:22px">Host：AI 應用程式</text> <text class="d-s" x="235" y="92">例如聊天助手、程式編輯器</text> <rect class="d-accent" x="48" y="165" width="140" height="70" rx="12"/> <text class="d-w" x="118" y="207">語言模型</text> <path class="d-dash" d="M188 190 L278 141"/> <path class="d-dash" d="M188 200 L278 200"/> <path class="d-dash" d="M188 210 L278 259"/> <rect class="d-box" x="280" y="118" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="147">Client 1</text> <rect class="d-box" x="280" y="177" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="206">Client 2</text> <rect class="d-box" x="280" y="236" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="265">Client 3</text> <path class="d-line" d="M420 141 L598 135" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <path class="d-line" d="M420 200 L598 200" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <path class="d-line" d="M420 259 L598 265" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <text class="d-o" x="510" y="118">MCP</text> <rect class="d-box" x="600" y="105" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="130">Server A（本機）</text> <text class="d-s" x="765" y="151">讀你電腦上的檔案</text> <rect class="d-box" x="600" y="171" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="196">Server B（本機）</text> <text class="d-s" x="765" y="217">查詢資料庫</text> <rect class="d-box" x="600" y="237" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="262">Server C（遠端）</text> <text class="d-s" x="765" y="283">連到線上服務</text> <text class="d-s" x="765" y="324">每個 server 提供 tools、resources、prompts</text> </svg> </figure>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/mcp.html">MCP：工具的共通插頭</a><a href="../../wiki/tools.html">工具：讓模型能動手</a>        </span>
+        <span class="foot-no">14 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-bullets" id="s15" aria-label="第 15 張，共 20 張">
+      <div class="slide-inner">
+        <h2>讓 agent 懂你的專案</h2>
+<h1>AGENTS.md：寫給 agent 的說明書</h1>
+<ul>
+<li>一份放在專案裡的純 Markdown，沒有必填欄位</li>
+<li>README 給人看；AGENTS.md 放建置步驟、測試指令、命名與風格慣例</li>
+<li>指示越具體，agent 越不容易做錯</li>
+<li>這份簡報所在的網站，就是 AI 照著一份規則檔維護的知識庫</li>
+</ul>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/agents-md.html">AGENTS.md：給 agent 的專案說明書</a><a href="../../wiki/llm-wiki.html">LLM Wiki：讓 AI 維護的知識庫</a>        </span>
+        <span class="foot-no">15 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-cards" id="s16" aria-label="第 16 張，共 20 張">
+      <div class="slide-inner">
+        <h2>放手之前</h2>
+<h1>護欄與人類把關</h1>
+<ul>
+<li><strong>多層護欄</strong> 沒有哪一種單獨就夠：範圍檢查、安全檢查、個資過濾、工具分級</li>
+<li><strong>高風險先問人</strong> 付款、取消訂單、大額退款，在可靠度被驗證前都先經過人</li>
+<li><strong>一直失敗就交棒</strong> 多次無法理解使用者的意圖時，交給真人處理</li>
+</ul>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/guardrails.html">護欄與人類把關</a><a href="../../wiki/tools.html">工具：讓模型能動手</a>        </span>
+        <span class="foot-no">16 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-bullets" id="s17" aria-label="第 17 張，共 20 張">
+      <div class="slide-inner">
+        <h2>目前的限制</h2>
+<h1>Agent 還做不好的事</h1>
+<ul>
+<li><strong>上下文有限</strong>：指示、紀錄、工具結果都擠在同一個視窗</li>
+<li>步驟一多容易偏離計畫，遇到意外不容易調整</li>
+<li>輸出可能不照格式，程式要花力氣檢查</li>
+<li>每一步都建立在上一步之上，小錯會累積成大錯</li>
+<li>比較慢，也比較貴</li>
+</ul>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/challenges.html">Agent 目前的限制</a>        </span>
+        <span class="foot-no">17 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-quiz" id="s18" aria-label="第 18 張，共 20 張">
+      <div class="slide-inner">
+        <h2>小測驗 2</h2>
+<h1>公司想自動彙整「每月格式固定的報表」，你會建議？</h1>
+<ol>
+<li>做一個完全自主的 agent，讓它自己決定怎麼做</li>
+<li>用固定流程：步驟寫好，每一步之後檢查</li>
+<li>讓多個 agent 互相交接</li>
+</ol>
+<blockquote>
+<p>答案是 B。步驟明確、希望結果可預測時，固定流程比較合適，也比較省。需要臨場判斷時才考慮 agent；一個 agent 不夠用時才考慮多個。</p>
+</blockquote>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/workflows-vs-agents.html">Workflow 與 agent 的差別</a><a href="../../wiki/multi-agent.html">多個 agent 一起工作</a>        </span>
+        <span class="foot-no">18 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-recap" id="s19" aria-label="第 19 張，共 20 張">
+      <div class="slide-inner">
+        <h2>帶走這五件事</h2>
+<h1>重點回顧</h1>
+<ol>
+<li>Agent 以模型為大腦，加上工具、記憶與規劃，拿到目標後自己把事情做完</li>
+<li>它靠「想 → 做 → 看」的循環運作，每一步都要看到真實結果</li>
+<li>先用最簡單的做法；步驟明確就用固定流程</li>
+<li>MCP 負責接工具，AGENTS.md 負責給規則</li>
+<li>動手之前先設好護欄、停止條件與人類把關</li>
+</ol>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/what-is-an-agent.html">AI agent 是什麼</a><a href="../../wiki/agent-loop.html">Agent 循環：想、做、看</a><a href="../../wiki/workflows-vs-agents.html">Workflow 與 agent 的差別</a><a href="../../wiki/mcp.html">MCP：工具的共通插頭</a><span class="foot-more">＋2 頁</span>        </span>
+        <span class="foot-no">19 / 20</span>
+      </footer>
+    </section>
+    <section class="slide layout-sources" id="s20" aria-label="第 20 張，共 20 張">
+      <div class="slide-inner">
+        <h2>這份簡報根據的資料</h2>
+<h1>來源</h1>
+<ul>
+<li><a href="../../wiki/src-react.html">ReAct 論文</a>：Yao 等人，2022</li>
+<li><a href="../../wiki/src-weng-agents.html">LLM Powered Autonomous Agents</a>：Lilian Weng，2023</li>
+<li><a href="../../wiki/src-anthropic-agents.html">Building effective agents</a>：Anthropic，2024</li>
+<li><a href="../../wiki/src-openai-guide.html">A practical guide to building agents</a>：OpenAI，2025</li>
+<li><a href="../../wiki/src-mcp-docs.html">Model Context Protocol 官方文件</a>、<a href="../../wiki/src-agents-md.html">AGENTS.md 官方網站</a></li>
+<li><a href="../../wiki/src-llm-wiki.html">LLM Wiki</a>：Andrej Karpathy，2026</li>
+</ul>
+<p>每張投影片左下角的標籤可以點回 Wiki；Wiki 的每一段都標了來源。</p>
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+<span class="foot-label">出自 Wiki</span><a href="../../wiki/src-react.html">ReAct 2022</a><a href="../../wiki/src-weng-agents.html">Weng 2023</a><a href="../../wiki/src-anthropic-agents.html">Anthropic 2024</a><a href="../../wiki/src-openai-guide.html">OpenAI 2025</a><span class="foot-more">＋3 頁</span>        </span>
+        <span class="foot-no">20 / 20</span>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="controls">
+  <a class="ctl home" href="../../index.html" title="回到 Agent 筆記本">← 筆記本</a>
+  <span class="hint" id="hint">← → 或空白鍵換頁</span>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+  <button class="ctl" id="prev" type="button" aria-label="上一張">‹</button>
+  <span class="count" id="count">1 / 20</span>
+  <button class="ctl" id="next" type="button" aria-label="下一張">›</button>
+</div>
+<script src="../../assets/deck.js"></script>
+</body>
+</html>

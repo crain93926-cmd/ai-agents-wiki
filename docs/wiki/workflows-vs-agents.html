@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workflow 與 agent 的差別 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 8 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>Workflow 與 agent 的差別</h1>
+    <p class="summary">Workflow 的步驟由人事先寫好；agent 的步驟由模型自己邊做邊決定。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>想像兩種員工：一種照著標準作業流程一步一步做；另一種只拿到目標，自己決定怎麼做。兩種都用得到語言模型，但適合的任務不一樣。</p>
+<h2>兩種架構</h2>
+<p>Workflow（固定流程）是指 LLM 和工具<strong>照著事先寫好的程式路徑</strong>執行。Agent 則是由 LLM 自己動態決定流程和要用的工具，自己掌握怎麼完成任務。兩者可以統稱為 agentic systems。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="Workflow 的路徑由程式事先寫好；Agent 的路徑由模型自己決定"> <defs><marker id="workflow-vs-agent-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="workflow-vs-agent-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-soft" x="20" y="20" width="440" height="320" rx="16"/> <text class="d-t" x="240" y="62" style="font-size:22px">Workflow（固定流程）</text> <text class="d-o" x="240" y="90">下一步由「程式」決定</text> <rect class="d-box" x="50" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="105" y="188">步驟 1</text> <rect class="d-box" x="185" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="240" y="188">步驟 2</text> <rect class="d-box" x="320" y="150" width="110" height="64" rx="10"/> <text class="d-t" x="375" y="188">步驟 3</text> <path class="d-line" d="M160 182 L183 182" marker-end="url(#workflow-vs-agent-ar)"/> <path class="d-line" d="M295 182 L318 182" marker-end="url(#workflow-vs-agent-ar)"/> <text class="d-s" x="240" y="278">每次都走同一條路</text> <text class="d-s" x="240" y="300">結果比較可預測</text> <rect class="d-soft" x="500" y="20" width="440" height="320" rx="16"/> <text class="d-t" x="720" y="62" style="font-size:22px">Agent</text> <text class="d-o" x="720" y="90">下一步由「模型」決定</text> <rect class="d-accent" x="660" y="125" width="120" height="70" rx="12"/> <text class="d-w" x="720" y="167" style="font-size:20px">LLM</text> <path class="d-line" d="M780 142 C 858 112, 858 208, 784 180" marker-end="url(#workflow-vs-agent-ar)"/> <text class="d-s" x="878" y="136">看結果</text> <text class="d-s" x="878" y="156">再決定</text> <path class="d-dash" d="M700 195 L575 238"/> <path class="d-dash" d="M720 195 L720 238"/> <path class="d-dash" d="M740 195 L865 238"/> <rect class="d-box" x="520" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="575" y="269">工具 A</text> <rect class="d-box" x="665" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="720" y="269">工具 B</text> <rect class="d-box" x="810" y="240" width="110" height="46" rx="10"/> <text class="d-t" x="865" y="269">工具 C</text> <text class="d-s" x="720" y="318">每次走的路可能不同，比較有彈性</text> </svg> </figure>
+
+<h2>怎麼選</h2>
+<p>原則是先找最簡單的解法，真的需要才增加複雜度。任務明確、希望結果可預測時，用 workflow。需要彈性、必須靠模型臨場判斷時，才用 agent。很多應用其實只要把單次的 LLM 呼叫配上檢索與好的範例就夠了。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>哪些任務值得用 agent</h2>
+<p>OpenAI 的指南舉出三類傳統規則式自動化處理不好、比較適合 agent 的任務：需要複雜判斷的（例如退款核准）、規則多到難以維護的（例如供應商安全審查）、大量依賴非結構化資料的（例如處理保險理賠文件）。不屬於這三類的話，確定性的做法可能就夠了。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>代價</h2>
+<p>Agentic system 通常是拿更長的等待時間和更高的成本，去換更好的任務表現。選用之前要先確定這個交換值得。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="workflow-patterns.html">五種 workflow 模式</a>：五種常見的 workflow 模式</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：agent 這一邊是怎麼運作的</li>
+<li><a href="multi-agent.html">多個 agent 一起工作</a>：一個 agent 不夠時怎麼分工</li>
+<li><a href="challenges.html">Agent 目前的限制</a>：放手讓模型決定的風險</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#2">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#2">2</a>、<a href="../slides/ai-agents-101/index.html#11">11</a>、<a href="../slides/ai-agents-101/index.html#12">12</a>、<a href="../slides/ai-agents-101/index.html#18">18</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="agent-loop.html">Agent 循環：想、做、看</a></li>
+          <li><a href="challenges.html">Agent 目前的限制</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="final-project.html">下一步：把這套流程做成自動化的 agent</a></li>
+          <li><a href="workflow-patterns.html">五種 workflow 模式</a></li>
+          <li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a></li>
+          <li><a href="workflow.html">這個網站的製作流程</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="planning.html"><span>上一站</span>規劃：拆解與反思</a><a class="next" href="workflow-patterns.html"><span>下一站</span>五種 workflow 模式</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

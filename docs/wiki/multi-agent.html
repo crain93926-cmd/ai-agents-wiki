@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多個 agent 一起工作 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 10 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>多個 agent 一起工作</h1>
+    <p class="summary">任務太複雜時可以拆給多個 agent：由一位主管指揮，或彼此交接。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>一個人事情太多、工具太雜的時候，就會考慮分工。Agent 也一樣。不過分工有溝通成本，所以不是越多越好。</p>
+<h2>先把單一 agent 用到極限</h2>
+<p>建議的順序是先用一個 agent，把它的工具與指示調到最好。只有在提示裡的條件判斷變得太複雜，或工具太多太相似、把說明寫清楚也分不出來的時候，才考慮拆成多個 agent。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>兩種分工方式</h2>
+<ul>
+<li><strong>Manager 模式</strong>：一個中央 agent 像主管，把各個專門的 agent 當成工具來呼叫。它自己保有和使用者對話的主導權，最後負責整合結果。</li>
+<li>Decentralized handoff 模式：幾個地位對等的 agent，依照專長把控制權整個交接給下一位，適合「先分流、再由專人處理」的情境。</li>
+</ul>
+<p>以上兩種模式出自 <a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a>。</p>
+<h2>和 orchestrator-workers 的關係</h2>
+<p><a href="workflow-patterns.html">五種 workflow 模式</a> 裡的 orchestrator-workers（指揮分工）也是「一個中央 LLM 拆任務、分派、整合」，和 manager 模式的想法相近。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="workflow-patterns.html">五種 workflow 模式</a>：指揮分工模式</li>
+<li><a href="tools.html">工具：讓模型能動手</a>：把其他 agent 當工具，屬於「協調類」工具</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#18">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#18">18</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="workflow-patterns.html"><span>上一站</span>五種 workflow 模式</a><a class="next" href="mcp.html"><span>下一站</span>MCP：工具的共通插頭</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

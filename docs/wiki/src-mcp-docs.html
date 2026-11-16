@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Context Protocol 官方文件 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-source">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-source">來源</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>Model Context Protocol 官方文件</h1>
+    <p class="summary">MCP 官方網站的介紹頁與架構總覽，說明它是什麼、有哪些角色與元素。</p>
+    <dl class="source-card">
+      <div><dt>作者</dt><dd>Model Context Protocol 專案</dd></div>
+      <div><dt>發表</dt><dd>持續更新（讀取時協定版本 2026-07-28）</dd></div>
+      <div><dt>原文</dt><dd><a href="https://modelcontextprotocol.io/docs/learn">https://modelcontextprotocol.io/docs/learn</a></dd></div>
+      <div><dt>讀取日期</dt><dd>2026-11-16</dd></div>
+    </dl>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <h2>這篇在講什麼</h2>
+<p>官方文件的兩頁：介紹頁說明 MCP 是什麼、能做什麼；架構總覽說明參與的角色、分層，以及 server 能提供的基本元素。</p>
+<h2>重點</h2>
+<ul>
+<li>MCP 是把 AI 應用程式接到外部系統的開放標準，文件用 USB-C 作比喻。見 <a href="mcp.html">MCP：工具的共通插頭</a>。</li>
+<li>三個角色：host（AI 應用程式）、client（host 裡負責連線的元件）、server（提供內容的程式）。</li>
+<li>Server 提供 tools、resources、prompts 三種基本元素。工具的概念見 <a href="tools.html">工具：讓模型能動手</a>。</li>
+<li>Client 先查詢 server 有哪些工具，再呼叫；server 可以在本機或遠端。</li>
+<li>MCP 只規定交換內容的方式，不規定 AI 應用怎麼使用模型。</li>
+</ul>
+<h2>這篇資料的限制</h2>
+<ul>
+<li>文件隨協定版本更新，本站讀的是 2026-07-28 版；舊文章的描述可能已經不同。</li>
+<li>這兩頁沒有說明 MCP 由誰在何時提出，所以本站不寫由來。</li>
+<li>官方文件，重點在規格，沒有討論缺點或替代方案。</li>
+</ul>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="mcp.html">MCP：工具的共通插頭</a>：給初學者的說明</li>
+<li><a href="tools.html">工具：讓模型能動手</a>：MCP 要解決的是工具怎麼接上來</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#20">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#20">20</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="mcp.html">MCP：工具的共通插頭</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent 目前的限制 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 14 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>Agent 目前的限制</h1>
+    <p class="summary">上下文有限、長程規劃容易走偏、輸出不一定照格式，是 agent 常見的三個難題。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>Agent 聽起來很厲害，但它有幾個到現在都還在努力解決的弱點。知道弱點在哪裡，才知道什麼事可以交給它。</p>
+<h2>三個常見難題</h2>
+<ul>
+<li><strong>上下文長度有限</strong>：歷史紀錄、指示、工具回傳的內容都要擠進同一個視窗，放不下就得取捨。</li>
+<li>長程規劃困難：步驟一多，模型容易偏離原本的計畫；遇到沒預料到的錯誤時，也不容易像人一樣調整。</li>
+<li>自然語言介面不可靠：模型的輸出可能格式不對，或沒有照指示做，所以程式要花很多力氣解析與檢查它的輸出。</li>
+</ul>
+<p>以上三點整理自 2023 年的總覽文章。<a class="cite" href="src-weng-agents.html" title="Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）">Weng 2023</a></p>
+<h2>自主的代價：成本與錯誤累積</h2>
+<p>讓模型自己決定步驟，通常比較慢、比較貴。而且每一步都建立在上一步的結果上，前面的小錯可能一路累積成大錯。因此建議先在隔離的測試環境（沙盒）裡充分測試，並搭配護欄。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="memory.html">記憶：短期與長期</a>：上下文有限時，長期記憶是補救方式之一</li>
+<li><a href="planning.html">規劃：拆解與反思</a>：規劃能力的現況</li>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：不一定要用 agent</li>
+<li><a href="guardrails.html">護欄與人類把關</a>：降低風險的做法</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a><span class="muted">Weng 2023</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#12">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#12">12</a>、<a href="../slides/ai-agents-101/index.html#17">17</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a></li>
+          <li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a></li>
+          <li><a href="planning.html">規劃：拆解與反思</a></li>
+          <li><a href="memory.html">記憶：短期與長期</a></li>
+          <li><a href="guardrails.html">護欄與人類把關</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="guardrails.html"><span>上一站</span>護欄與人類把關</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

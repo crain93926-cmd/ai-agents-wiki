@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReAct：邊想邊做 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 4 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>ReAct：邊想邊做</h1>
+    <p class="summary">讓模型把「想法」和「行動」交錯寫出來的做法，是 agent 循環的原型。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>ReAct 是 Reasoning（推理）加 Acting（行動）的縮寫。它像是要求一個人「做事的時候把心裡的話說出來」：先說打算做什麼，做了之後看結果，再說下一步。</p>
+<h2>做法：想法、行動、觀察</h2>
+<p>模型的輸出被安排成三種內容輪流出現：<strong>想法</strong>（Thought，現在的判斷與打算）、行動（Action，呼叫某個工具或對環境做一件事）、觀察（Observation，行動帶回來的結果）。這三步重複很多輪，直到任務完成。<a class="cite" href="src-react.html" title="ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）">ReAct 2022</a></p>
+<h2>為什麼要把想和做放在一起</h2>
+<p>只會想的模型拿不到新資訊，想錯了也沒有東西可以糾正它。只會做的模型沒有計畫，遇到意外不知道怎麼調整。ReAct 讓行動帶回外部資訊，讓推理根據新資訊修改計畫，兩邊互相補足。<a class="cite" href="src-react.html" title="ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）">ReAct 2022</a></p>
+<h2>實驗結果</h2>
+<p>在兩個需要連續做決定的測試（ALFWorld、WebShop）中，ReAct 的絕對成功率比先前的模仿學習與強化學習方法分別高出 34% 與 10%，而且提示裡只放了一到兩個範例。在問答與事實查核的測試中，可以查 Wikipedia 的 ReAct 比只靠推理的做法更不容易出現幻覺。這些是 2022 年的數字。<a class="cite" href="src-react.html" title="ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）">ReAct 2022</a></p>
+<h2>在整個 agent 架構裡的位置</h2>
+<p>在「大腦加三個零件」的架構中，ReAct 被歸在<a href="planning.html">規劃</a>底下的「反思與修正」：模型不只執行，還能根據觀察到的結果回頭調整。<a class="cite" href="src-weng-agents.html" title="Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）">Weng 2023</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：ReAct 的三步驟就是 agent 循環的基本形狀</li>
+<li><a href="planning.html">規劃：拆解與反思</a>：ReAct 所屬的能力</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-react.html">ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</a><span class="muted">ReAct 2022</span></li>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a><span class="muted">Weng 2023</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#8">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#8">8</a>、<a href="../slides/ai-agents-101/index.html#9">9</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agent-loop.html">Agent 循環：想、做、看</a></li>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a></li>
+          <li><a href="src-react.html">ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</a></li>
+          <li><a href="planning.html">規劃：拆解與反思</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="agent-loop.html"><span>上一站</span>Agent 循環：想、做、看</a><a class="next" href="tools.html"><span>下一站</span>工具：讓模型能動手</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

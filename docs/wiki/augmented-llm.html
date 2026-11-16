@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>基本積木：加了配備的 LLM · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 2 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>基本積木：加了配備的 LLM</h1>
+    <p class="summary">在語言模型外面加上檢索、工具與記憶，就是所有 agent 系統的最小單位。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>單獨的語言模型像一位只能靠記憶回答的人。給他一本可以查的資料、幾樣工具和一本筆記本，他能做的事就多很多。這個「加了配備的模型」是後面所有做法的起點。</p>
+<h2>三樣配備</h2>
+<p>這個基本積木叫 augmented LLM（擴充過的 LLM）：一個 LLM 加上<strong>檢索、工具、記憶</strong>。模型可以自己產生搜尋用的查詢、挑選適合的工具、決定哪些資訊要留下來。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>設計時的兩個建議</h2>
+<p>第一，依照實際用途調整這些配備，不要一次全裝。第二，給模型的介面要清楚、有完整的說明文件，模型才知道每樣東西怎麼用。<a href="mcp.html">MCP：工具的共通插頭</a> 是提供這種介面的方式之一。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：另一種「大腦加三個零件」的說法</li>
+<li><a href="tools.html">工具：讓模型能動手</a>、<a href="memory.html">記憶：短期與長期</a>：配備的細節</li>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：把積木組起來的兩種方式</li>
+<li><a href="mcp.html">MCP：工具的共通插頭</a>：接上外部工具的標準</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#5">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#5">5</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="mcp.html">MCP：工具的共通插頭</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="what-is-an-agent.html"><span>上一站</span>AI agent 是什麼</a><a class="next" href="agent-loop.html"><span>下一站</span>Agent 循環：想、做、看</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

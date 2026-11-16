@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Wiki：讓 AI 維護的知識庫 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>LLM Wiki：讓 AI 維護的知識庫</h1>
+    <p class="summary">人挑資料、AI 把資料整理成互相連結的 Markdown 頁面，並持續更新。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>讀完一篇文章後，多數人不會把重點整理進自己的筆記系統，因為太花時間。LLM Wiki 的想法是把這件苦工交給 AI：你只管挑資料和問問題。</p>
+<h2>核心想法</h2>
+<p>常見的做法是每次提問時才去原始文件裡找相關段落。LLM Wiki 反過來：讓 LLM 先把資料讀過、整理成一個 wiki，之後有新資料就<strong>更新 wiki</strong>，而不是每次從頭來。這樣整理的成果會一直累積。<a class="cite" href="src-llm-wiki.html" title="Karpathy：LLM Wiki">Karpathy 2026</a></p>
+<h2>三層結構</h2>
+<ul>
+<li>原始來源：人挑選的文章與論文。AI 只讀不改，是事實的依據。</li>
+<li>Wiki：AI 寫的 Markdown 頁面，包含來源摘要、概念頁、比較與總覽。</li>
+<li>Schema：一份規則檔，規定 wiki 的結構、慣例與流程。本站的規則檔就是 <a href="agents-md.html">AGENTS.md</a>。</li>
+</ul>
+<p>以上出自 <a class="cite" href="src-llm-wiki.html" title="Karpathy：LLM Wiki">Karpathy 2026</a>。</p>
+<h2>三種操作</h2>
+<ul>
+<li>Ingest（讀入）：AI 讀新來源，先和人討論重點，再寫摘要頁、更新相關頁面、更新目錄、記一筆紀錄。</li>
+<li>Query（查詢）：AI 先讀目錄找到相關頁面，再綜合出附引用的答案。答案可以是一頁說明，也可以是一份簡報。</li>
+<li>Lint（體檢）：定期檢查矛盾、過時的說法、沒有人連到的孤兒頁、缺少的頁面。</li>
+</ul>
+<p>以上出自 <a class="cite" href="src-llm-wiki.html" title="Karpathy：LLM Wiki">Karpathy 2026</a>。</p>
+<h2>本站怎麼用</h2>
+<p>本站就是一個 LLM Wiki：這一頁、其他概念頁和教學簡報，都是 AI 依規則檔從來源整理出來的。和原始想法有一點不同：本站的原始來源層只保存書目資料與閱讀筆記，不保存原文全文。原始想法見 <a class="cite" href="src-llm-wiki.html" title="Karpathy：LLM Wiki">Karpathy 2026</a>；本站的實作見 <a href="workflow.html">這個網站的製作流程</a>。</p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="agents-md.html">AGENTS.md：給 agent 的專案說明書</a>：規則檔</li>
+<li><a href="workflow.html">這個網站的製作流程</a>：本站的製作流程與檢查方式</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-llm-wiki.html">Karpathy：LLM Wiki</a><span class="muted">Karpathy 2026</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#15">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#15">15</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agents-md.html">AGENTS.md：給 agent 的專案說明書</a></li>
+          <li><a href="src-llm-wiki.html">Karpathy：LLM Wiki</a></li>
+          <li><a href="final-project.html">下一步：把這套流程做成自動化的 agent</a></li>
+          <li><a href="workflow.html">這個網站的製作流程</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

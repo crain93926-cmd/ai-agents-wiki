@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGENTS.md：給 agent 的專案說明書 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 12 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>AGENTS.md：給 agent 的專案說明書</h1>
+    <p class="summary">放在專案裡的一份 Markdown，告訴 AI 這個專案的規則、結構與做事方式。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>新同事第一天上班，通常會拿到一份「這裡的做事方式」。AGENTS.md 就是寫給 AI agent 的那一份。</p>
+<h2>它是什麼</h2>
+<p>AGENTS.md 是一種開放的格式：一份放在專案裡的<strong>純 Markdown 檔</strong>，沒有必填欄位，用來告訴會寫程式的 agent 這個專案的背景與規則。官方網站把它稱為給 agent 看的 README。網站在 2026-11-16 寫有超過 60,000 個開源專案使用。<a class="cite" href="src-agents-md.html" title="AGENTS.md 官方網站">agents.md</a></p>
+<h2>和 README 的分工</h2>
+<p>README 是寫給人看的：專案介紹、怎麼開始。AGENTS.md 放的是 agent 需要、但放進 README 會顯得雜亂的細節，例如建置步驟、測試指令、命名與風格慣例。<a class="cite" href="src-agents-md.html" title="AGENTS.md 官方網站">agents.md</a></p>
+<h2>通常寫些什麼</h2>
+<p>常見的段落有專案概觀、建置與測試指令、程式風格、測試說明、安全注意事項。大型專案可以在不同資料夾各放一份，agent 會採用離它正在編輯的檔案最近的那一份；使用者在對話中明確下的指示則優先於檔案內容。<a class="cite" href="src-agents-md.html" title="AGENTS.md 官方網站">agents.md</a></p>
+<h2>為什麼 agent 需要它</h2>
+<p>Agent 的三個核心元件是模型、工具、指示，其中指示決定了 agent 的行為。指示寫得越具體、越貼近實際步驟，agent 越不容易做錯。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a> AGENTS.md 就是把「這個專案專用的指示」固定寫在檔案裡，不用每次重講。<a class="cite" href="src-agents-md.html" title="AGENTS.md 官方網站">agents.md</a></p>
+<h2>不只用在寫程式</h2>
+<p>規則檔也可以用來管理知識庫。在 <a href="llm-wiki.html">LLM Wiki：讓 AI 維護的知識庫</a> 的做法裡，這份檔案叫 schema：它規定頁面的結構、命名的慣例，以及讀入資料、回答問題、定期檢查的流程。不同工具慣用的檔名不同，例如 Claude Code 讀 CLAUDE.md，Codex 讀 AGENTS.md。<a class="cite" href="src-llm-wiki.html" title="Karpathy：LLM Wiki">Karpathy 2026</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：指示是 agent 的核心元件之一</li>
+<li><a href="mcp.html">MCP：工具的共通插頭</a>：另一個讓 agent 更好用的開放標準</li>
+<li><a href="llm-wiki.html">LLM Wiki：讓 AI 維護的知識庫</a>：規則檔在知識庫裡的用法</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-agents-md.html">AGENTS.md 官方網站</a><span class="muted">agents.md</span></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+          <li><a href="src-llm-wiki.html">Karpathy：LLM Wiki</a><span class="muted">Karpathy 2026</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#15">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#15">15</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="src-agents-md.html">AGENTS.md 官方網站</a></li>
+          <li><a href="src-llm-wiki.html">Karpathy：LLM Wiki</a></li>
+          <li><a href="llm-wiki.html">LLM Wiki：讓 AI 維護的知識庫</a></li>
+          <li><a href="mcp.html">MCP：工具的共通插頭</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="mcp.html"><span>上一站</span>MCP：工具的共通插頭</a><a class="next" href="guardrails.html"><span>下一站</span>護欄與人類把關</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

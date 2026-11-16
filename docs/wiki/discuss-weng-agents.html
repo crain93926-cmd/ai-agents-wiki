@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>討論：Lilian Weng〈LLM Powered Autonomous Agents〉 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-discussion">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-discussion">討論紀錄</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>討論：Lilian Weng〈LLM Powered Autonomous Agents〉</h1>
+    <p class="summary">讀入 Lilian Weng 2023 年 agent 總覽文章之前的重點提案</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <h2>這篇的重點</h2>
+<ol>
+<li>一個好記的架構：LLM 是大腦，外加規劃、記憶、工具三個零件。</li>
+<li>規劃 = 拆解任務 + 反思修正。</li>
+<li>記憶分短期（上下文視窗內）與長期（外部資料庫，用檢索取回）。</li>
+<li>工具讓模型拿到權重裡沒有的東西：最新資訊、執行程式、專有資料。</li>
+<li>三個挑戰：上下文有限、長程規劃困難、自然語言介面不可靠。</li>
+</ol>
+<h2>預計新增的頁面</h2>
+<ul>
+<li><a class="cite" href="src-weng-agents.html" title="Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）">Weng 2023</a>：來源頁</li>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：先放這篇的「大腦＋三零件」架構，之後的來源再補上不同機構的定義</li>
+<li><a href="planning.html">規劃：拆解與反思</a>、<a href="memory.html">記憶：短期與長期</a>、<a href="tools.html">工具：讓模型能動手</a>：三個零件各一頁</li>
+<li><a href="challenges.html">Agent 目前的限制</a>：限制與挑戰</li>
+</ul>
+<h2>預計更新的頁面</h2>
+<ul>
+<li><a href="react.html">ReAct：邊想邊做</a>：補上 ReAct 在整個架構中屬於「反思修正」這一類</li>
+</ul>
+<h2>和既有內容的關係</h2>
+<ul>
+<li>補充：<a class="cite" href="src-react.html" title="ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）">ReAct 2022</a> 只講一種做法，這篇把它放進更大的架構裡。沒有矛盾。</li>
+</ul>
+<h2>想問人的問題</h2>
+<ul>
+<li>文中有很多方法名稱（Tree of Thoughts、Reflexion、HNSW……）。提案：概念頁只各舉一兩個，其餘留在來源頁，避免初學者被名詞淹沒。</li>
+</ul>
+<h2>決定</h2>
+<ul>
+<li>2026-11-16：沿用第一篇的授權範圍，由 AI 提案後直接採用。方法名稱採取「概念頁少量、來源頁完整」的做法。</li>
+</ul>
+    </div>
+    <aside class="side">
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

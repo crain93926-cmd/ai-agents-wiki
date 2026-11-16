@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP：工具的共通插頭 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 11 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>MCP：工具的共通插頭</h1>
+    <p class="summary">一套開放標準，讓各種 AI 應用用同一種方式接上外部的資料與工具。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>以前每種裝置的充電線都不一樣，後來有了 USB-C，一條線可以接很多東西。MCP（Model Context Protocol）想為 AI 應用做同樣的事。</p>
+<h2>它解決什麼問題</h2>
+<p>Agent 要好用，就得接上各種<a href="tools.html">工具</a>與資料。如果每個 AI 應用都要為每個工具各寫一套串接方式，工作量會很大。MCP 是一套<strong>開放標準</strong>，規定 AI 應用程式和外部系統之間怎麼交換內容，目標是「做一次，到處可接」。官方文件自己用的比喻就是 USB-C。<a class="cite" href="src-mcp-docs.html" title="Model Context Protocol 官方文件">MCP 文件</a> Anthropic 談到 agent 的基本積木時，也把 MCP 列為替模型接上第三方工具的一種方式。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>三個角色</h2>
+<figure class="diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="MCP 的三個角色：Host 內有多個 client，每個 client 連到一個 server"> <defs><marker id="mcp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="mcp-aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs> <rect class="d-soft" x="20" y="30" width="430" height="300" rx="16"/> <text class="d-t" x="235" y="68" style="font-size:22px">Host：AI 應用程式</text> <text class="d-s" x="235" y="92">例如聊天助手、程式編輯器</text> <rect class="d-accent" x="48" y="165" width="140" height="70" rx="12"/> <text class="d-w" x="118" y="207">語言模型</text> <path class="d-dash" d="M188 190 L278 141"/> <path class="d-dash" d="M188 200 L278 200"/> <path class="d-dash" d="M188 210 L278 259"/> <rect class="d-box" x="280" y="118" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="147">Client 1</text> <rect class="d-box" x="280" y="177" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="206">Client 2</text> <rect class="d-box" x="280" y="236" width="140" height="46" rx="10"/> <text class="d-t" x="350" y="265">Client 3</text> <path class="d-line" d="M420 141 L598 135" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <path class="d-line" d="M420 200 L598 200" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <path class="d-line" d="M420 259 L598 265" marker-end="url(#mcp-ar)" marker-start="url(#mcp-ar)"/> <text class="d-o" x="510" y="118">MCP</text> <rect class="d-box" x="600" y="105" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="130">Server A（本機）</text> <text class="d-s" x="765" y="151">讀你電腦上的檔案</text> <rect class="d-box" x="600" y="171" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="196">Server B（本機）</text> <text class="d-s" x="765" y="217">查詢資料庫</text> <rect class="d-box" x="600" y="237" width="330" height="58" rx="10"/> <text class="d-t" x="765" y="262">Server C（遠端）</text> <text class="d-s" x="765" y="283">連到線上服務</text> <text class="d-s" x="765" y="324">每個 server 提供 tools、resources、prompts</text> </svg> </figure>
+
+<ul>
+<li><strong>Host</strong>：AI 應用程式本身，例如聊天助手或程式編輯器。</li>
+<li>Client：host 裡面負責和某一個 server 保持連線的元件。Host 會為每個 server 各建立一個 client。</li>
+<li>Server：提供內容的程式。可以在你的電腦上執行，也可以在遠端執行。</li>
+</ul>
+<p>以上出自 <a class="cite" href="src-mcp-docs.html" title="Model Context Protocol 官方文件">MCP 文件</a>。</p>
+<h2>Server 能提供的三種東西</h2>
+<ul>
+<li>Tools：AI 可以呼叫來執行動作的函式，例如查詢資料庫。</li>
+<li>Resources：提供背景資訊的資料，例如檔案內容。</li>
+<li>Prompts：可以重複使用的提示範本。</li>
+</ul>
+<p>AI 應用會先問 server「你有哪些工具」，把清單交給語言模型；模型決定要用某個工具時，應用程式再把呼叫轉給對應的 server，並把結果放回對話裡。<a class="cite" href="src-mcp-docs.html" title="Model Context Protocol 官方文件">MCP 文件</a></p>
+<h2>它不管什麼</h2>
+<p>MCP 只規定內容怎麼交換，不規定 AI 應用要怎麼使用語言模型，也不規定拿到內容之後怎麼處理。文件會隨版本更新，本頁根據的是 2026-07-28 版。<a class="cite" href="src-mcp-docs.html" title="Model Context Protocol 官方文件">MCP 文件</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="tools.html">工具：讓模型能動手</a>：工具本身的概念</li>
+<li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a>：MCP 是替基本積木接上工具的方式之一</li>
+<li><a href="agents-md.html">AGENTS.md：給 agent 的專案說明書</a>：另一個開放標準，管的是專案規則</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-mcp-docs.html">Model Context Protocol 官方文件</a><span class="muted">MCP 文件</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#14">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#14">14</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agents-md.html">AGENTS.md：給 agent 的專案說明書</a></li>
+          <li><a href="src-mcp-docs.html">Model Context Protocol 官方文件</a></li>
+          <li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="multi-agent.html"><span>上一站</span>多個 agent 一起工作</a><a class="next" href="agents-md.html"><span>下一站</span>AGENTS.md：給 agent 的專案說明書</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents） · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-source">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-source">來源</span>
+      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</h1>
+    <p class="summary">把 agent 整理成「LLM 大腦＋規劃、記憶、工具」的經典總覽文章。</p>
+    <dl class="source-card">
+      <div><dt>作者</dt><dd>Lilian Weng（Lil&#39;Log 部落格）</dd></div>
+      <div><dt>發表</dt><dd>2023-06-23</dd></div>
+      <div><dt>原文</dt><dd><a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></dd></div>
+      <div><dt>讀取日期</dt><dd>2026-11-16</dd></div>
+    </dl>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <h2>這篇在講什麼</h2>
+<p>這篇文章整理了 2023 年中以前的 agent 研究，提出一個後來被廣泛引用的架構：把大型語言模型（LLM）當成大腦，再加上規劃、記憶、使用工具三個零件。</p>
+<h2>重點</h2>
+<ul>
+<li>架構總覽見 <a href="what-is-an-agent.html">AI agent 是什麼</a>。</li>
+<li>規劃包含拆解任務與反思修正；文中介紹了 Chain of Thought、Tree of Thoughts、LLM+P、ReAct、Reflexion、Chain of Hindsight、Algorithm Distillation 等方法。見 <a href="planning.html">規劃：拆解與反思</a>、<a href="react.html">ReAct：邊想邊做</a>。</li>
+<li>記憶分短期與長期；長期記憶靠向量資料庫與近似最近鄰搜尋（文中列了 LSH、ANNOY、HNSW、FAISS、ScaNN）。見 <a href="memory.html">記憶：短期與長期</a>。</li>
+<li>工具的例子包含 MRKL、TALM、Toolformer、ChatGPT Plugins、function calling、HuggingGPT、API-Bank。見 <a href="tools.html">工具：讓模型能動手</a>。</li>
+<li>案例包含 ChemCrow、Generative Agents、AutoGPT、GPT-Engineer。</li>
+<li>文末列出三個挑戰，見 <a href="challenges.html">Agent 目前的限制</a>。</li>
+</ul>
+<h2>這篇資料的限制</h2>
+<ul>
+<li>2023 年的整理。文中的系統多半是當時的概念驗證。</li>
+<li>偏重研究方法的介紹，沒有談產品上線時的護欄與成本。</li>
+</ul>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：這篇的架構是本站定義頁的起點</li>
+<li><a href="planning.html">規劃：拆解與反思</a>、<a href="memory.html">記憶：短期與長期</a>、<a href="tools.html">工具：讓模型能動手</a>：三個零件</li>
+<li><a href="challenges.html">Agent 目前的限制</a>：文末的三個挑戰</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#20">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#20">20</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="challenges.html">Agent 目前的限制</a></li>
+          <li><a href="react.html">ReAct：邊想邊做</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+          <li><a href="planning.html">規劃：拆解與反思</a></li>
+          <li><a href="memory.html">記憶：短期與長期</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

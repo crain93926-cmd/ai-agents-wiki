@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工具：讓模型能動手 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 5 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>工具：讓模型能動手</h1>
+    <p class="summary">工具是 agent 能呼叫的外部功能，用來查資料、執行程式或操作其他系統。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>語言模型本身只會產生文字。工具就像交給助理的電話、計算機和門禁卡：有了它們，助理才能真的去查、去算、去辦事。</p>
+<h2>為什麼需要工具</h2>
+<p>模型學到的知識停在訓練的那一刻，也不能自己執行程式或讀你的私人資料。透過呼叫外部的 API（應用程式介面），agent 可以取得<strong>模型本身沒有的東西</strong>：最新的資訊、執行程式碼的能力、專有的資料來源。<a class="cite" href="src-weng-agents.html" title="Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）">Weng 2023</a></p>
+<h2>三種工具</h2>
+<ul>
+<li><strong>資料類</strong>：取得資訊，例如查資料庫、讀文件、搜尋網路。</li>
+<li>行動類：改變外部系統的狀態，例如寄訊息、更新紀錄、把案件轉給真人。</li>
+<li>協調類：把另一個 agent 當成工具來呼叫。</li>
+</ul>
+<p>這個分類出自 <a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a>。行動類工具會真的改變東西，風險比資料類高，要搭配<a href="guardrails.html">護欄</a>。</p>
+<h2>工具的說明要寫給模型看</h2>
+<p>模型是靠工具的名稱與說明文字來決定要不要用、怎麼用。所以設計工具時，要像寫給新進同事的說明一樣：講清楚用途、給範例、說明邊界情況，並且實際測試模型會怎麼用錯。這個「agent 與電腦之間的介面」值得花和寫提示一樣多的心力。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>讓工具不容易被用錯</h2>
+<p>好的做法是直接把容易出錯的用法擋掉。一個實例：某個工具改成只接受絕對路徑之後，模型用相對路徑造成的錯誤就消失了。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>工具怎麼接上來</h2>
+<p>每個工具都需要名稱、說明和輸入格式，AI 應用才能把它交給模型使用。<a href="mcp.html">MCP：工具的共通插頭</a> 把這件事標準化：應用程式先向提供工具的程式查詢清單，再依模型的決定去呼叫。<a class="cite" href="src-mcp-docs.html" title="Model Context Protocol 官方文件">MCP 文件</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="what-is-an-agent.html">AI agent 是什麼</a>：工具是三個零件之一</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：循環中的「做」就是使用工具</li>
+<li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a>：工具是基本積木的配備之一</li>
+<li><a href="guardrails.html">護欄與人類把關</a>：高風險的工具要有人把關</li>
+<li><a href="multi-agent.html">多個 agent 一起工作</a>：協調類工具的用法</li>
+<li><a href="mcp.html">MCP：工具的共通插頭</a>：接上工具的開放標準</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a><span class="muted">Weng 2023</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+          <li><a href="src-mcp-docs.html">Model Context Protocol 官方文件</a><span class="muted">MCP 文件</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#3">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#3">3</a>、<a href="../slides/ai-agents-101/index.html#6">6</a>、<a href="../slides/ai-agents-101/index.html#14">14</a>、<a href="../slides/ai-agents-101/index.html#16">16</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="what-is-an-agent.html">AI agent 是什麼</a></li>
+          <li><a href="agent-loop.html">Agent 循環：想、做、看</a></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a></li>
+          <li><a href="mcp.html">MCP：工具的共通插頭</a></li>
+          <li><a href="src-mcp-docs.html">Model Context Protocol 官方文件</a></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="augmented-llm.html">基本積木：加了配備的 LLM</a></li>
+          <li><a href="multi-agent.html">多個 agent 一起工作</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="react.html"><span>上一站</span>ReAct：邊想邊做</a><a class="next" href="memory.html"><span>下一站</span>記憶：短期與長期</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

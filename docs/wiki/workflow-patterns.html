@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五種 workflow 模式 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 9 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>五種 workflow 模式</h1>
+    <p class="summary">串接、分流、平行、指揮分工、評分修正：五種把 LLM 呼叫組起來的固定流程。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>固定流程不代表只有一種排法。以下五種模式像五種常見的工作安排方式，可以單獨用，也可以組合。</p>
+<h2>五種模式一覽</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>一句話說明</th>
+<th>適合什麼時候</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt chaining（串接）</td>
+<td>把任務拆成依序的幾步，上一步的輸出交給下一步，中間可以加檢查</td>
+<td>任務可以乾淨地拆成固定步驟</td>
+</tr>
+<tr>
+<td>Routing（分流）</td>
+<td>先判斷輸入屬於哪一類，再交給專門的處理方式</td>
+<td>不同類型的輸入適合分開處理</td>
+</tr>
+<tr>
+<td>Parallelization（平行）</td>
+<td>同時跑多個 LLM 呼叫，再把結果彙整</td>
+<td>想加快速度，或想要多個觀點提高把握</td>
+</tr>
+<tr>
+<td>Orchestrator-workers（指揮分工）</td>
+<td>一個中央 LLM 臨場拆任務、分派給其他 LLM、再整合</td>
+<td>事先無法預測要拆成哪些子任務</td>
+</tr>
+<tr>
+<td>Evaluator-optimizer（評分修正）</td>
+<td>一個 LLM 產出，另一個評分並給回饋，反覆修改</td>
+<td>評估標準清楚，而且反覆修改確實有幫助</td>
+</tr>
+</tbody>
+</table>
+<p>整理自 <a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a>。</p>
+<h2>幾個例子</h2>
+<p>串接的例子是先寫大綱、檢查大綱、再寫全文。分流的例子是簡單問題交給小模型、困難問題交給大模型。平行有兩種變化：把任務切成互不相干的部分同時做（sectioning），或是同一件事做好幾次再比較（voting）。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>和本站的關係</h2>
+<p>本站自己的製作流程用到其中兩種：整體是串接（讀來源、寫 Wiki、做簡報，每一步之間有檢查），檢查不過就退回重寫的部分是評分修正。模式的定義見 <a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a>；流程本身見 <a href="workflow.html">這個網站的製作流程</a>。</p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a>：為什麼這些算 workflow 而不算 agent</li>
+<li><a href="workflow.html">這個網站的製作流程</a>：本站的製作流程</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#13">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#13">13</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a></li>
+          <li><a href="workflows-vs-agents.html">Workflow 與 agent 的差別</a></li>
+          <li><a href="final-project.html">下一步：把這套流程做成自動化的 agent</a></li>
+          <li><a href="multi-agent.html">多個 agent 一起工作</a></li>
+          <li><a href="workflow.html">這個網站的製作流程</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="workflows-vs-agents.html"><span>上一站</span>Workflow 與 agent 的差別</a><a class="next" href="multi-agent.html"><span>下一站</span>多個 agent 一起工作</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

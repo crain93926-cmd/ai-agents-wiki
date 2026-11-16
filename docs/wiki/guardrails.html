@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>護欄與人類把關 · Agent 筆記本</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="is-page type-concept">
+<header class="top">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="../index.html#path">學習路徑</a>
+    <a href="../wiki/catalog.html">Wiki 目錄</a>
+    <a href="../slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="../wiki/workflow.html">製作流程</a>
+    <a href="../wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-concept">概念</span>
+<span class="step">學習路徑 13 / 14</span>      <span class="updated">更新 2026-11-16</span>
+    </p>
+    <h1>護欄與人類把關</h1>
+    <p class="summary">用多層檢查限制 agent 能做的事，並在高風險或一直失敗時交給真人。</p>
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      <p>讓 agent 自己動手做事，就像讓新人獨立作業：需要先講好哪些事不能做、哪些事要先問過主管。護欄就是這些規定的技術版本。</p>
+<h2>多層護欄</h2>
+<p>沒有哪一種護欄單獨就夠，所以要<strong>多層搭配</strong>。常見的種類有：判斷問題是否在服務範圍內的相關性分類器、偵測惡意提示的安全分類器、個資過濾、內容審核、依風險高低為工具分級的工具防護、黑名單與長度限制等規則式防護，以及輸出驗證。建議先從資料隱私與內容安全做起，再依實際遇到的狀況增加。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>什麼時候交給真人</h2>
+<p>有兩種情況應該讓人接手：一是超過失敗門檻，例如 agent 多次都無法理解使用者的意圖；二是高風險動作，例如取消訂單、核准大額退款、付款。在 agent 的可靠度被驗證之前，這些動作都應該先經過人。<a class="cite" href="src-openai-guide.html" title="OpenAI：打造 agent 的實務指南（A practical guide to building agents）">OpenAI 2025</a></p>
+<h2>檢查點與測試</h2>
+<p>Agent 也可以在預先設好的檢查點暫停，等人確認後再繼續。上線之前，建議先在隔離的環境充分測試，因為自主運作時錯誤會累積。<a class="cite" href="src-anthropic-agents.html" title="Anthropic：打造有效的 agent（Building effective agents）">Anthropic 2024</a></p>
+<h2>相關頁面</h2>
+<ul>
+<li><a href="challenges.html">Agent 目前的限制</a>：為什麼需要護欄</li>
+<li><a href="agent-loop.html">Agent 循環：想、做、看</a>：停止條件也是一種保護</li>
+</ul>
+    </div>
+    <aside class="side">
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a><span class="muted">OpenAI 2025</span></li>
+          <li><a href="src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a><span class="muted">Anthropic 2024</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          <li><a href="../slides/ai-agents-101/index.html#2">AI Agents 是什麼？</a><span class="muted">第 <a href="../slides/ai-agents-101/index.html#2">2</a>、<a href="../slides/ai-agents-101/index.html#10">10</a>、<a href="../slides/ai-agents-101/index.html#16">16</a>、<a href="../slides/ai-agents-101/index.html#19">19</a> 張</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          <li><a href="agent-loop.html">Agent 循環：想、做、看</a></li>
+          <li><a href="challenges.html">Agent 目前的限制</a></li>
+          <li><a href="src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a></li>
+          <li><a href="final-project.html">下一步：把這套流程做成自動化的 agent</a></li>
+          <li><a href="tools.html">工具：讓模型能動手</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="pager" aria-label="學習路徑">
+<a class="prev" href="agents-md.html"><span>上一站</span>AGENTS.md：給 agent 的專案說明書</a><a class="next" href="challenges.html"><span>下一站</span>Agent 目前的限制</a>  </nav>
+</article>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>

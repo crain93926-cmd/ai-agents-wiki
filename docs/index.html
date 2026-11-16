@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent 筆記本：從零看懂 AI Agents：每一句話都查得到出處的學習筆記</title>
+<meta name="description" content="用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="is-home">
+<header class="top">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">↻</span>Agent 筆記本</a>
+  <nav aria-label="主選單">
+    <a href="index.html#path">學習路徑</a>
+    <a href="wiki/catalog.html">Wiki 目錄</a>
+    <a href="slides/ai-agents-101/index.html">教學簡報</a>
+    <a href="wiki/workflow.html">製作流程</a>
+    <a href="wiki/log.html">更新紀錄</a>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">LLM Wiki · AI Agents 入門</p>
+    <h1>Agent 筆記本</h1>
+    <p class="lead">從零看懂 AI Agents：每一句話都查得到出處的學習筆記</p>
+    <p class="hero-actions">
+      <a class="btn btn-primary" href="slides/ai-agents-101/index.html">看教學簡報（20 張）</a>
+      <a class="btn" href="#path">從第一站開始讀</a>
+    </p>
+    <ul class="stats">
+      <li><strong>7</strong> 篇原始來源</li>
+      <li><strong>15</strong> 個概念頁</li>
+      <li><strong>20</strong> 張投影片</li>
+    </ul>
+  </div>
+  <figure class="hero-loop" aria-label="Agent 的運作循環：想、做、看">
+    <svg viewBox="0 0 320 320" role="img">
+      <circle cx="160" cy="160" r="118" class="loop-ring"/>
+      <path d="M160 42 A118 118 0 0 1 262 219" class="loop-arc"/>
+      <g class="loop-node"><circle cx="160" cy="42" r="34"/><text x="160" y="49">想</text></g>
+      <g class="loop-node"><circle cx="262" cy="219" r="34"/><text x="262" y="226">做</text></g>
+      <g class="loop-node"><circle cx="58" cy="219" r="34"/><text x="58" y="226">看</text></g>
+      <text x="160" y="155" class="loop-center">目標達成</text>
+      <text x="160" y="180" class="loop-center-sub">才停下來</text>
+    </svg>
+  </figure>
+</section>
+
+<section class="block" id="path">
+  <header class="block-head">
+    <h2>學習路徑</h2>
+    <p>照順序讀，每一站只講一件事。每頁底部都有「下一站」。</p>
+  </header>
+  <ol class="path">
+    <li>
+      <a href="wiki/what-is-an-agent.html">
+        <span class="path-no">01</span>
+        <span class="path-title">AI agent 是什麼</span>
+        <span class="path-sum">一個以語言模型為大腦，能自己規劃、使用工具、記住事情來完成任務的系統。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/augmented-llm.html">
+        <span class="path-no">02</span>
+        <span class="path-title">基本積木：加了配備的 LLM</span>
+        <span class="path-sum">在語言模型外面加上檢索、工具與記憶，就是所有 agent 系統的最小單位。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/agent-loop.html">
+        <span class="path-no">03</span>
+        <span class="path-title">Agent 循環：想、做、看</span>
+        <span class="path-sum">Agent 不是一次回答完，而是重複「想 → 做 → 看結果」直到完成。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/react.html">
+        <span class="path-no">04</span>
+        <span class="path-title">ReAct：邊想邊做</span>
+        <span class="path-sum">讓模型把「想法」和「行動」交錯寫出來的做法，是 agent 循環的原型。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/tools.html">
+        <span class="path-no">05</span>
+        <span class="path-title">工具：讓模型能動手</span>
+        <span class="path-sum">工具是 agent 能呼叫的外部功能，用來查資料、執行程式或操作其他系統。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/memory.html">
+        <span class="path-no">06</span>
+        <span class="path-title">記憶：短期與長期</span>
+        <span class="path-sum">短期記憶是模型當下看得到的內容；長期記憶存在外部，需要時再查回來。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/planning.html">
+        <span class="path-no">07</span>
+        <span class="path-title">規劃：拆解與反思</span>
+        <span class="path-sum">Agent 把大任務拆成小步驟，並在過程中回頭檢討、修正做法。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/workflows-vs-agents.html">
+        <span class="path-no">08</span>
+        <span class="path-title">Workflow 與 agent 的差別</span>
+        <span class="path-sum">Workflow 的步驟由人事先寫好；agent 的步驟由模型自己邊做邊決定。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/workflow-patterns.html">
+        <span class="path-no">09</span>
+        <span class="path-title">五種 workflow 模式</span>
+        <span class="path-sum">串接、分流、平行、指揮分工、評分修正：五種把 LLM 呼叫組起來的固定流程。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/multi-agent.html">
+        <span class="path-no">10</span>
+        <span class="path-title">多個 agent 一起工作</span>
+        <span class="path-sum">任務太複雜時可以拆給多個 agent：由一位主管指揮，或彼此交接。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/mcp.html">
+        <span class="path-no">11</span>
+        <span class="path-title">MCP：工具的共通插頭</span>
+        <span class="path-sum">一套開放標準，讓各種 AI 應用用同一種方式接上外部的資料與工具。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/agents-md.html">
+        <span class="path-no">12</span>
+        <span class="path-title">AGENTS.md：給 agent 的專案說明書</span>
+        <span class="path-sum">放在專案裡的一份 Markdown，告訴 AI 這個專案的規則、結構與做事方式。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/guardrails.html">
+        <span class="path-no">13</span>
+        <span class="path-title">護欄與人類把關</span>
+        <span class="path-sum">用多層檢查限制 agent 能做的事，並在高風險或一直失敗時交給真人。</span>
+      </a>
+    </li>
+    <li>
+      <a href="wiki/challenges.html">
+        <span class="path-no">14</span>
+        <span class="path-title">Agent 目前的限制</span>
+        <span class="path-sum">上下文有限、長程規劃容易走偏、輸出不一定照格式，是 agent 常見的三個難題。</span>
+      </a>
+    </li>
+  </ol>
+</section>
+
+<section class="block" id="concepts">
+  <header class="block-head">
+    <h2>依主題瀏覽</h2>
+    <p>所有概念頁，依主題分組。</p>
+  </header>
+  <div class="group">
+    <h3>基礎<span>Agent 是什麼、由哪些零件組成</span></h3>
+    <ul class="cards">
+      <li><a href="wiki/what-is-an-agent.html"><strong>AI agent 是什麼</strong><span>一個以語言模型為大腦，能自己規劃、使用工具、記住事情來完成任務的系統。</span></a></li>
+      <li><a href="wiki/augmented-llm.html"><strong>基本積木：加了配備的 LLM</strong><span>在語言模型外面加上檢索、工具與記憶，就是所有 agent 系統的最小單位。</span></a></li>
+    </ul>
+  </div>
+  <div class="group">
+    <h3>運作方式<span>Agent 怎麼一步一步把事情做完</span></h3>
+    <ul class="cards">
+      <li><a href="wiki/agent-loop.html"><strong>Agent 循環：想、做、看</strong><span>Agent 不是一次回答完，而是重複「想 → 做 → 看結果」直到完成。</span></a></li>
+      <li><a href="wiki/react.html"><strong>ReAct：邊想邊做</strong><span>讓模型把「想法」和「行動」交錯寫出來的做法，是 agent 循環的原型。</span></a></li>
+      <li><a href="wiki/tools.html"><strong>工具：讓模型能動手</strong><span>工具是 agent 能呼叫的外部功能，用來查資料、執行程式或操作其他系統。</span></a></li>
+      <li><a href="wiki/memory.html"><strong>記憶：短期與長期</strong><span>短期記憶是模型當下看得到的內容；長期記憶存在外部，需要時再查回來。</span></a></li>
+      <li><a href="wiki/planning.html"><strong>規劃：拆解與反思</strong><span>Agent 把大任務拆成小步驟，並在過程中回頭檢討、修正做法。</span></a></li>
+    </ul>
+  </div>
+  <div class="group">
+    <h3>設計模式<span>什麼時候用固定流程、什麼時候放手讓模型決定</span></h3>
+    <ul class="cards">
+      <li><a href="wiki/workflows-vs-agents.html"><strong>Workflow 與 agent 的差別</strong><span>Workflow 的步驟由人事先寫好；agent 的步驟由模型自己邊做邊決定。</span></a></li>
+      <li><a href="wiki/workflow-patterns.html"><strong>五種 workflow 模式</strong><span>串接、分流、平行、指揮分工、評分修正：五種把 LLM 呼叫組起來的固定流程。</span></a></li>
+      <li><a href="wiki/multi-agent.html"><strong>多個 agent 一起工作</strong><span>任務太複雜時可以拆給多個 agent：由一位主管指揮，或彼此交接。</span></a></li>
+    </ul>
+  </div>
+  <div class="group">
+    <h3>生態與工具<span>讓 agent 接上外部世界與專案規則的標準</span></h3>
+    <ul class="cards">
+      <li><a href="wiki/mcp.html"><strong>MCP：工具的共通插頭</strong><span>一套開放標準，讓各種 AI 應用用同一種方式接上外部的資料與工具。</span></a></li>
+      <li><a href="wiki/agents-md.html"><strong>AGENTS.md：給 agent 的專案說明書</strong><span>放在專案裡的一份 Markdown，告訴 AI 這個專案的規則、結構與做事方式。</span></a></li>
+      <li><a href="wiki/llm-wiki.html"><strong>LLM Wiki：讓 AI 維護的知識庫</strong><span>人挑資料、AI 把資料整理成互相連結的 Markdown 頁面，並持續更新。</span></a></li>
+    </ul>
+  </div>
+  <div class="group">
+    <h3>風險與限制<span>放手之前要先想好的事</span></h3>
+    <ul class="cards">
+      <li><a href="wiki/guardrails.html"><strong>護欄與人類把關</strong><span>用多層檢查限制 agent 能做的事，並在高風險或一直失敗時交給真人。</span></a></li>
+      <li><a href="wiki/challenges.html"><strong>Agent 目前的限制</strong><span>上下文有限、長程規劃容易走偏、輸出不一定照格式，是 agent 常見的三個難題。</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <header class="block-head">
+    <h2>原始來源</h2>
+    <p>Wiki 的每個段落都只根據下面這些資料寫成。點進去可以看到重點摘要與原文連結。</p>
+  </header>
+  <ul class="source-list">
+    <li>
+      <span class="src-short">ReAct 2022</span>
+      <a href="wiki/src-react.html">ReAct 論文（ReAct: Synergizing Reasoning and Acting in Language Models）</a>
+      <span class="muted">Shunyu Yao 等七人（Princeton University、Google Research）</span>
+    </li>
+    <li>
+      <span class="src-short">Weng 2023</span>
+      <a href="wiki/src-weng-agents.html">Lilian Weng：LLM 驅動的自主 agent（LLM Powered Autonomous Agents）</a>
+      <span class="muted">Lilian Weng（Lil&#39;Log 部落格）</span>
+    </li>
+    <li>
+      <span class="src-short">Anthropic 2024</span>
+      <a href="wiki/src-anthropic-agents.html">Anthropic：打造有效的 agent（Building effective agents）</a>
+      <span class="muted">Anthropic 工程團隊</span>
+    </li>
+    <li>
+      <span class="src-short">OpenAI 2025</span>
+      <a href="wiki/src-openai-guide.html">OpenAI：打造 agent 的實務指南（A practical guide to building agents）</a>
+      <span class="muted">OpenAI</span>
+    </li>
+    <li>
+      <span class="src-short">Karpathy 2026</span>
+      <a href="wiki/src-llm-wiki.html">Karpathy：LLM Wiki</a>
+      <span class="muted">Andrej Karpathy</span>
+    </li>
+    <li>
+      <span class="src-short">agents.md</span>
+      <a href="wiki/src-agents-md.html">AGENTS.md 官方網站</a>
+      <span class="muted">AGENTS.md 專案（Agentic AI Foundation 維護）</span>
+    </li>
+    <li>
+      <span class="src-short">MCP 文件</span>
+      <a href="wiki/src-mcp-docs.html">Model Context Protocol 官方文件</a>
+      <span class="muted">Model Context Protocol 專案</span>
+    </li>
+  </ul>
+</section>
+
+<section class="block" id="about">
+  <header class="block-head">
+    <h2>這個網站怎麼做出來的</h2>
+    <p>人負責挑資料、決定方向；AI 依照專案根目錄的 <code>AGENTS.md</code> 讀資料、寫 Wiki、跑檢查、產生簡報。</p>
+  </header>
+  <ul class="cards cards-meta">
+    <li><a href="wiki/final-project.html"><strong>下一步：把這套流程做成自動化的 agent</strong><span>期末專案構想 WikiDeck：輸入一個主題，自動建立 LLM Wiki 並產出教學簡報。</span></a></li>
+    <li><a href="wiki/workflow.html"><strong>這個網站的製作流程</strong><span>從挑資料到產生簡報的九個節點，以及哪裡會重複、哪裡會被退回。</span></a></li>
+    <li><a href="wiki/log.html"><strong>更新紀錄</strong><span>每一次讀入來源與檢查的時間軸。</span></a></li>
+  </ul>
+</section>
+</main>
+<footer class="bottom">
+  <p>Agent 筆記本 · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：陳裎雨 · <a href="https://github.com/crain93926-cmd/ai-agents-wiki">GitHub 原始檔</a></p>
+</footer>
+</body>
+</html>
