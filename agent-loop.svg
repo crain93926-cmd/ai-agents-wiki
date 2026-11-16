@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" role="img" aria-label="Agent 循環：從目標出發，重複想、做、看，直到符合停止條件">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<rect class="d-mark" x="30" y="150" width="170" height="80" rx="12"/>
+<text class="d-t" x="115" y="186" style="font-size:20px">目標</text>
+<text class="d-s" x="115" y="211">人交代的任務</text>
+<path class="d-line" d="M200 190 L268 190" marker-end="url(#ar)"/>
+<rect class="d-accent" x="270" y="140" width="180" height="100" rx="14"/>
+<text class="d-w" x="360" y="184" style="font-size:26px">想</text>
+<text class="d-ws" x="360" y="212">決定下一步</text>
+<rect class="d-box" x="560" y="40" width="200" height="90" rx="12"/>
+<text class="d-t" x="660" y="82" style="font-size:26px">做</text>
+<text class="d-s" x="660" y="108">使用工具</text>
+<rect class="d-box" x="560" y="250" width="200" height="90" rx="12"/>
+<text class="d-t" x="660" y="292" style="font-size:26px">看</text>
+<text class="d-s" x="660" y="318">讀取真實結果</text>
+<path class="d-line" d="M450 165 L558 96" marker-end="url(#ar)"/>
+<path class="d-line" d="M660 130 L660 248" marker-end="url(#ar)"/>
+<path class="d-line" d="M560 295 L452 216" marker-end="url(#ar)"/>
+<text class="d-o" x="850" y="186">重複很多輪</text>
+<text class="d-s" x="850" y="208">直到可以停</text>
+<path class="d-back" d="M360 240 L360 298" marker-end="url(#aro)"/>
+<rect class="d-soft" x="215" y="300" width="290" height="70" rx="12"/>
+<text class="d-t" x="360" y="330">停下來：完成，或交還給人</text>
+<text class="d-s" x="360" y="354">任務完成・達到回合上限・需要人確認</text>
+</svg>

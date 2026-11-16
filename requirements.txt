@@ -1,0 +1,5 @@
+markdown
+jinja2
+pyyaml
+# 選用：讓 tools/check.py site 能量測投影片是否超出版面
+# playwright

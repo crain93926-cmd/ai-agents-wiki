@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-label="期末專案 WikiDeck 的流程圖：三個階段，包含 LLM 節點、程式檢查與人類把關">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<rect class="d-box" x="20" y="40" width="160" height="64" rx="10"/>
+<text class="d-t" x="100" y="68">輸入</text>
+<text class="d-s" x="100" y="90">主題・對象・來源數</text>
+<rect class="d-box" x="205" y="40" width="160" height="64" rx="10"/>
+<text class="d-t" x="285" y="68">A 找來源</text>
+<text class="d-s" x="285" y="90">LLM＋搜尋工具</text>
+<rect class="d-accent" x="390" y="40" width="160" height="64" rx="10"/>
+<text class="d-w" x="470" y="68">人：確認來源</text>
+<text class="d-ws" x="470" y="90">Gradio 介面</text>
+<path class="d-line" d="M180 72 L203 72" marker-end="url(#ar)"/>
+<path class="d-line" d="M365 72 L388 72" marker-end="url(#ar)"/>
+<rect class="d-box" x="640" y="38" width="22" height="16" rx="3"/>
+<text class="d-s d-l" x="672" y="51">LLM 或程式節點</text>
+<rect class="d-mark" x="640" y="64" width="22" height="16" rx="3"/>
+<text class="d-s d-l" x="672" y="77">檢查節點（失敗就退回）</text>
+<rect class="d-accent" x="640" y="90" width="22" height="16" rx="3"/>
+<text class="d-s d-l" x="672" y="103">人類把關（流程在這裡暫停）</text>
+<path class="d-line" d="M470 104 L470 134 L100 134 L100 175" marker-end="url(#ar)"/>
+<rect class="d-dash" x="8" y="160" width="944" height="150" rx="14"/>
+<text class="d-s" x="850" y="152">每一篇來源重複一次</text>
+<rect class="d-box" x="20" y="178" width="160" height="64" rx="10"/>
+<text class="d-t" x="100" y="206">B 讀取來源</text>
+<text class="d-s" x="100" y="228">擷取網頁 → 來源卡</text>
+<rect class="d-box" x="205" y="178" width="160" height="64" rx="10"/>
+<text class="d-t" x="285" y="206">C 提出重點</text>
+<text class="d-s" x="285" y="228">LLM 寫討論紀錄</text>
+<rect class="d-accent" x="390" y="178" width="160" height="64" rx="10"/>
+<text class="d-w" x="470" y="206">人：確認重點</text>
+<text class="d-ws" x="470" y="228">可修改或退回</text>
+<rect class="d-box" x="575" y="178" width="160" height="64" rx="10"/>
+<text class="d-t" x="655" y="206">D 寫入 Wiki</text>
+<text class="d-s" x="655" y="228">LLM 依 AGENTS.md</text>
+<rect class="d-mark" x="760" y="178" width="160" height="64" rx="10"/>
+<text class="d-t" x="840" y="206">E Wiki 檢查</text>
+<text class="d-m" x="840" y="228">check.py wiki</text>
+<path class="d-line" d="M180 210 L203 210" marker-end="url(#ar)"/>
+<path class="d-line" d="M365 210 L388 210" marker-end="url(#ar)"/>
+<path class="d-line" d="M550 210 L573 210" marker-end="url(#ar)"/>
+<path class="d-line" d="M735 210 L758 210" marker-end="url(#ar)"/>
+<path class="d-back" d="M820 242 C 820 282, 655 282, 655 245" marker-end="url(#aro)"/>
+<text class="d-o" x="737" y="298">失敗 → 重寫（最多 3 次，否則交給人）</text>
+<path class="d-line" d="M900 242 L900 334 L90 334 L90 357" marker-end="url(#ar)"/>
+<text class="d-s" x="300" y="327">所有來源都通過</text>
+<rect class="d-box" x="20" y="360" width="140" height="64" rx="10"/>
+<text class="d-t" x="90" y="388">F 簡報大綱</text>
+<text class="d-s" x="90" y="410">LLM 只讀 Wiki</text>
+<rect class="d-mark" x="175" y="360" width="140" height="64" rx="10"/>
+<text class="d-t" x="245" y="388">G 大綱檢查</text>
+<text class="d-s" x="245" y="410">程式＋LLM 評審</text>
+<rect class="d-box" x="330" y="360" width="140" height="64" rx="10"/>
+<text class="d-t" x="400" y="388">H 建置</text>
+<text class="d-m" x="400" y="410">build.py</text>
+<rect class="d-mark" x="485" y="360" width="140" height="64" rx="10"/>
+<text class="d-t" x="555" y="388">I 版面檢查</text>
+<text class="d-s" x="555" y="410">截圖＋視覺模型</text>
+<rect class="d-accent" x="640" y="360" width="140" height="64" rx="10"/>
+<text class="d-w" x="710" y="388">人：確認發布</text>
+<text class="d-ws" x="710" y="410">看過才上線</text>
+<rect class="d-box" x="795" y="360" width="140" height="64" rx="10"/>
+<text class="d-t" x="865" y="388">發布</text>
+<text class="d-s" x="865" y="410">GitHub Pages</text>
+<path class="d-line" d="M160 392 L173 392" marker-end="url(#ar)"/>
+<path class="d-line" d="M315 392 L328 392" marker-end="url(#ar)"/>
+<path class="d-line" d="M470 392 L483 392" marker-end="url(#ar)"/>
+<path class="d-line" d="M625 392 L638 392" marker-end="url(#ar)"/>
+<path class="d-line" d="M780 392 L793 392" marker-end="url(#ar)"/>
+<path class="d-back" d="M245 424 C 245 462, 100 462, 100 427" marker-end="url(#aro)"/>
+<text class="d-o" x="296" y="458">失敗</text>
+<path class="d-back" d="M555 424 C 555 504, 70 504, 70 427" marker-end="url(#aro)"/>
+<text class="d-o" x="330" y="508">版面塞不下 → 刪字或拆頁</text>
+</svg>

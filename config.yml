@@ -1,0 +1,38 @@
+# 網站設定。新增概念頁後，要讓它出現在首頁，請更新 learning_path 或確認它的 group 在下方 groups 內。
+site_title: Agent 筆記本
+tagline: 從零看懂 AI Agents：每一句話都查得到出處的學習筆記
+description: 用 LLM Wiki 方法整理的 AI Agents 入門知識庫，內容由 AI 依 AGENTS.md 的規則維護。
+author: 陳裎雨
+repo_url: "https://github.com/crain93926-cmd/ai-agents-wiki"
+
+nav:
+  - {label: 學習路徑, href: "index.html#path"}
+  - {label: Wiki 目錄, href: "wiki/catalog.html"}
+  - {label: 教學簡報, href: "slides/ai-agents-101/index.html"}
+  - {label: 製作流程, href: "wiki/workflow.html"}
+  - {label: 更新紀錄, href: "wiki/log.html"}
+
+# 首頁「學習路徑」的順序，也是概念頁上一頁／下一頁的順序
+learning_path:
+  - what-is-an-agent
+  - augmented-llm
+  - agent-loop
+  - react
+  - tools
+  - memory
+  - planning
+  - workflows-vs-agents
+  - workflow-patterns
+  - multi-agent
+  - mcp
+  - agents-md
+  - guardrails
+  - challenges
+
+# 首頁概念卡片的分組；概念頁 frontmatter 的 group 必須是其中之一
+groups:
+  - {name: 基礎, blurb: Agent 是什麼、由哪些零件組成}
+  - {name: 運作方式, blurb: Agent 怎麼一步一步把事情做完}
+  - {name: 設計模式, blurb: 什麼時候用固定流程、什麼時候放手讓模型決定}
+  - {name: 生態與工具, blurb: 讓 agent 接上外部世界與專案規則的標準}
+  - {name: 風險與限制, blurb: 放手之前要先想好的事}

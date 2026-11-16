@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="Workflow 的路徑由程式事先寫好；Agent 的路徑由模型自己決定">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<rect class="d-soft" x="20" y="20" width="440" height="320" rx="16"/>
+<text class="d-t" x="240" y="62" style="font-size:22px">Workflow（固定流程）</text>
+<text class="d-o" x="240" y="90">下一步由「程式」決定</text>
+<rect class="d-box" x="50" y="150" width="110" height="64" rx="10"/>
+<text class="d-t" x="105" y="188">步驟 1</text>
+<rect class="d-box" x="185" y="150" width="110" height="64" rx="10"/>
+<text class="d-t" x="240" y="188">步驟 2</text>
+<rect class="d-box" x="320" y="150" width="110" height="64" rx="10"/>
+<text class="d-t" x="375" y="188">步驟 3</text>
+<path class="d-line" d="M160 182 L183 182" marker-end="url(#ar)"/>
+<path class="d-line" d="M295 182 L318 182" marker-end="url(#ar)"/>
+<text class="d-s" x="240" y="278">每次都走同一條路</text>
+<text class="d-s" x="240" y="300">結果比較可預測</text>
+<rect class="d-soft" x="500" y="20" width="440" height="320" rx="16"/>
+<text class="d-t" x="720" y="62" style="font-size:22px">Agent</text>
+<text class="d-o" x="720" y="90">下一步由「模型」決定</text>
+<rect class="d-accent" x="660" y="125" width="120" height="70" rx="12"/>
+<text class="d-w" x="720" y="167" style="font-size:20px">LLM</text>
+<path class="d-line" d="M780 142 C 858 112, 858 208, 784 180" marker-end="url(#ar)"/>
+<text class="d-s" x="878" y="136">看結果</text>
+<text class="d-s" x="878" y="156">再決定</text>
+<path class="d-dash" d="M700 195 L575 238"/>
+<path class="d-dash" d="M720 195 L720 238"/>
+<path class="d-dash" d="M740 195 L865 238"/>
+<rect class="d-box" x="520" y="240" width="110" height="46" rx="10"/>
+<text class="d-t" x="575" y="269">工具 A</text>
+<rect class="d-box" x="665" y="240" width="110" height="46" rx="10"/>
+<text class="d-t" x="720" y="269">工具 B</text>
+<rect class="d-box" x="810" y="240" width="110" height="46" rx="10"/>
+<text class="d-t" x="865" y="269">工具 C</text>
+<text class="d-s" x="720" y="318">每次走的路可能不同，比較有彈性</text>
+</svg>

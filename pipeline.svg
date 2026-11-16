@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-label="本站的製作流程：九個節點，檢查失敗時退回前面的節點">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<path class="d-line" d="M745 70 C 745 22, 115 22, 115 67" marker-end="url(#ar)"/>
+<text class="d-s" x="430" y="57">通過 → 讀下一篇來源</text>
+<rect class="d-box" x="40" y="70" width="150" height="70" rx="10"/>
+<text class="d-t" x="115" y="100">① 蒐集</text>
+<text class="d-s" x="115" y="123">讀來源、寫來源卡</text>
+<rect class="d-box" x="250" y="70" width="150" height="70" rx="10"/>
+<text class="d-t" x="325" y="100">② 討論</text>
+<text class="d-s" x="325" y="123">重點提案、確認</text>
+<rect class="d-box" x="460" y="70" width="150" height="70" rx="10"/>
+<text class="d-t" x="535" y="100">③ 寫入 Wiki</text>
+<text class="d-s" x="535" y="123">來源頁、概念頁、目錄</text>
+<rect class="d-mark" x="670" y="70" width="150" height="70" rx="10"/>
+<text class="d-t" x="745" y="100">④ Wiki 檢查</text>
+<text class="d-m" x="745" y="123">check.py wiki</text>
+<path class="d-line" d="M190 105 L248 105" marker-end="url(#ar)"/>
+<path class="d-line" d="M400 105 L458 105" marker-end="url(#ar)"/>
+<path class="d-line" d="M610 105 L668 105" marker-end="url(#ar)"/>
+<path class="d-back" d="M745 140 C 745 186, 535 186, 535 143" marker-end="url(#aro)"/>
+<text class="d-o" x="640" y="196">失敗 → 退回重寫</text>
+<path class="d-line" d="M820 105 L900 105 L900 240 L115 240 L115 277" marker-end="url(#ar)"/>
+<text class="d-s" x="300" y="231">來源都讀完，開始做簡報</text>
+<rect class="d-box" x="45" y="280" width="140" height="70" rx="10"/>
+<text class="d-t" x="115" y="310">⑤ 簡報大綱</text>
+<text class="d-s" x="115" y="333">只用 Wiki 的內容</text>
+<rect class="d-mark" x="230" y="280" width="140" height="70" rx="10"/>
+<text class="d-t" x="300" y="310">⑥ 大綱檢查</text>
+<text class="d-m" x="300" y="333">check.py deck</text>
+<rect class="d-box" x="415" y="280" width="140" height="70" rx="10"/>
+<text class="d-t" x="485" y="310">⑦ 建置</text>
+<text class="d-m" x="485" y="333">build.py</text>
+<rect class="d-mark" x="600" y="280" width="140" height="70" rx="10"/>
+<text class="d-t" x="670" y="310">⑧ 產出檢查</text>
+<text class="d-m" x="670" y="333">check.py site</text>
+<rect class="d-accent" x="785" y="280" width="140" height="70" rx="10"/>
+<text class="d-w" x="855" y="310">⑨ 交付</text>
+<text class="d-ws" x="855" y="333">人決定是否發布</text>
+<path class="d-line" d="M185 315 L228 315" marker-end="url(#ar)"/>
+<path class="d-line" d="M370 315 L413 315" marker-end="url(#ar)"/>
+<path class="d-line" d="M555 315 L598 315" marker-end="url(#ar)"/>
+<path class="d-line" d="M740 315 L783 315" marker-end="url(#ar)"/>
+<path class="d-back" d="M300 350 C 300 392, 130 392, 130 353" marker-end="url(#aro)"/>
+<text class="d-o" x="330" y="384">失敗</text>
+<path class="d-back" d="M670 350 C 670 440, 95 440, 95 353" marker-end="url(#aro)"/>
+<text class="d-o" x="470" y="446">失敗：版面塞不下 → 回 ⑤ 刪字</text>
+<text class="d-o" x="560" y="268">Wiki 沒有的內容 → 回 ①，不自己補</text>
+</svg>

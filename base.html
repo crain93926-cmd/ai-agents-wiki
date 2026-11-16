@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ cfg.site_title }}{% endblock %}</title>
+<meta name="description" content="{{ cfg.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ root }}assets/style.css">
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<header class="top">
+  <a class="brand" href="{{ root }}index.html"><span class="brand-mark" aria-hidden="true">↻</span>{{ cfg.site_title }}</a>
+  <nav aria-label="主選單">
+    {% for item in cfg.nav %}
+    <a href="{{ root }}{{ item.href }}">{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+</header>
+<main>
+{% block main %}{% endblock %}
+</main>
+<footer class="bottom">
+  <p>{{ cfg.site_title }} · 內容由 AI 依 <code>AGENTS.md</code> 的規則整理，每個段落都標註來源；若與原始來源不符，以原始來源為準。</p>
+  <p>作者：{{ cfg.author }}{% if cfg.repo_url %} · <a href="{{ cfg.repo_url }}">GitHub 原始檔</a>{% endif %}</p>
+</footer>
+</body>
+</html>

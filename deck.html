@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ deck.meta.title }} · {{ cfg.site_title }}</title>
+<meta name="description" content="{{ deck.meta.goal }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ root }}assets/deck.css">
+</head>
+<body>
+<div class="viewport">
+  <div class="stage" id="stage">
+    {% for s in slides %}
+    <section class="slide layout-{{ s.layout }}" id="s{{ s.number }}" aria-label="第 {{ s.number }} 張，共 {{ slides | length }} 張">
+      <div class="slide-inner">
+        {{ s.html | safe }}
+      </div>
+      <footer class="slide-foot">
+        <span class="foot-refs">
+          {% if s.refs %}<span class="foot-label">出自 Wiki</span>{% for r in s.refs[:4] %}<a href="{{ root }}wiki/{{ r.slug }}.html">{{ r.meta.short or r.title }}</a>{% endfor %}{% if s.refs | length > 4 %}<span class="foot-more">＋{{ s.refs | length - 4 }} 頁</span>{% endif %}{% endif %}
+        </span>
+        <span class="foot-no">{{ s.number }} / {{ slides | length }}</span>
+      </footer>
+    </section>
+    {% endfor %}
+  </div>
+</div>
+<div class="controls">
+  <a class="ctl home" href="{{ root }}index.html" title="回到 {{ cfg.site_title }}">← 筆記本</a>
+  <span class="hint" id="hint">← → 或空白鍵換頁</span>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+  <button class="ctl" id="prev" type="button" aria-label="上一張">‹</button>
+  <span class="count" id="count">1 / {{ slides | length }}</span>
+  <button class="ctl" id="next" type="button" aria-label="下一張">›</button>
+</div>
+<script src="{{ root }}assets/deck.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} · {{ cfg.site_title }}{% endblock %}
+{% block bodyclass %}is-page type-{{ page.type }}{% endblock %}
+{% block main %}
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow">
+      <span class="badge badge-{{ page.type }}">{{ type_label.get(page.type, page.type) }}</span>
+      {% if step %}<span class="step">學習路徑 {{ step }} / {{ steps }}</span>{% endif %}
+      <span class="updated">更新 {{ page.meta.updated }}</span>
+    </p>
+    <h1>{{ page.title }}</h1>
+    <p class="summary">{{ page.meta.summary }}</p>
+    {% if page.type == "source" %}
+    <dl class="source-card">
+      <div><dt>作者</dt><dd>{{ page.meta.author }}</dd></div>
+      <div><dt>發表</dt><dd>{{ page.meta.published }}</dd></div>
+      <div><dt>原文</dt><dd><a href="{{ page.meta.url }}">{{ page.meta.url }}</a></dd></div>
+      <div><dt>讀取日期</dt><dd>{{ page.meta.fetched }}</dd></div>
+    </dl>
+    {% endif %}
+  </header>
+
+  <div class="page-grid">
+    <div class="prose">
+      {{ body | safe }}
+    </div>
+    <aside class="side">
+      {% if sources %}
+      <section>
+        <h2>這一頁的來源</h2>
+        <ul>
+          {% for s in sources %}
+          <li><a href="{{ s.slug }}.html">{{ s.title }}</a><span class="muted">{{ s.meta.short }}</span></li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+      {% if in_slides %}
+      <section>
+        <h2>用在教學簡報</h2>
+        <ul>
+          {% for deck_name, items in in_slides | groupby("deck.name") %}
+          <li><a href="{{ root }}slides/{{ deck_name }}/index.html#{{ items[0].number }}">{{ items[0].deck.meta.title }}</a><span class="muted">第 {% for x in items %}<a href="{{ root }}slides/{{ deck_name }}/index.html#{{ x.number }}">{{ x.number }}</a>{{ "、" if not loop.last }}{% endfor %} 張</span></li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+      {% if backlinks %}
+      <section>
+        <h2>哪些頁面連到這裡</h2>
+        <ul>
+          {% for b in backlinks %}
+          <li><a href="{{ b.slug }}.html">{{ b.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if prev or next %}
+  <nav class="pager" aria-label="學習路徑">
+    {% if prev %}<a class="prev" href="{{ prev.slug }}.html"><span>上一站</span>{{ prev.title }}</a>{% else %}<span></span>{% endif %}
+    {% if next %}<a class="next" href="{{ next.slug }}.html"><span>下一站</span>{{ next.title }}</a>{% endif %}
+  </nav>
+  {% endif %}
+</article>
+{% endblock %}

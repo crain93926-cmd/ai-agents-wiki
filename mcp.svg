@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="MCP 的三個角色：Host 內有多個 client，每個 client 連到一個 server">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<rect class="d-soft" x="20" y="30" width="430" height="300" rx="16"/>
+<text class="d-t" x="235" y="68" style="font-size:22px">Host：AI 應用程式</text>
+<text class="d-s" x="235" y="92">例如聊天助手、程式編輯器</text>
+<rect class="d-accent" x="48" y="165" width="140" height="70" rx="12"/>
+<text class="d-w" x="118" y="207">語言模型</text>
+<path class="d-dash" d="M188 190 L278 141"/>
+<path class="d-dash" d="M188 200 L278 200"/>
+<path class="d-dash" d="M188 210 L278 259"/>
+<rect class="d-box" x="280" y="118" width="140" height="46" rx="10"/>
+<text class="d-t" x="350" y="147">Client 1</text>
+<rect class="d-box" x="280" y="177" width="140" height="46" rx="10"/>
+<text class="d-t" x="350" y="206">Client 2</text>
+<rect class="d-box" x="280" y="236" width="140" height="46" rx="10"/>
+<text class="d-t" x="350" y="265">Client 3</text>
+<path class="d-line" d="M420 141 L598 135" marker-end="url(#ar)" marker-start="url(#ar)"/>
+<path class="d-line" d="M420 200 L598 200" marker-end="url(#ar)" marker-start="url(#ar)"/>
+<path class="d-line" d="M420 259 L598 265" marker-end="url(#ar)" marker-start="url(#ar)"/>
+<text class="d-o" x="510" y="118">MCP</text>
+<rect class="d-box" x="600" y="105" width="330" height="58" rx="10"/>
+<text class="d-t" x="765" y="130">Server A（本機）</text>
+<text class="d-s" x="765" y="151">讀你電腦上的檔案</text>
+<rect class="d-box" x="600" y="171" width="330" height="58" rx="10"/>
+<text class="d-t" x="765" y="196">Server B（本機）</text>
+<text class="d-s" x="765" y="217">查詢資料庫</text>
+<rect class="d-box" x="600" y="237" width="330" height="58" rx="10"/>
+<text class="d-t" x="765" y="262">Server C（遠端）</text>
+<text class="d-s" x="765" y="283">連到線上服務</text>
+<text class="d-s" x="765" y="324">每個 server 提供 tools、resources、prompts</text>
+</svg>

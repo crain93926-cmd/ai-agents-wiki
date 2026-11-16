@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · {{ cfg.site_title }}{% endblock %}
+{% block bodyclass %}is-page is-{{ kind }}{% endblock %}
+{% block main %}
+<article class="page">
+  <header class="page-head">
+    <p class="eyebrow"><span class="badge badge-meta">{{ "目錄" if kind == "index" else "紀錄" }}</span></p>
+    <h1>{{ title }}</h1>
+    {% if kind == "index" %}
+    <p class="summary">這是 Wiki 的總目錄，對應原始檔 <code>wiki/index.md</code>。AI 每次回答問題或製作簡報時，都先讀這一頁找到相關頁面。</p>
+    {% else %}
+    <p class="summary">對應原始檔 <code>wiki/log.md</code>：每一次讀入來源（ingest）、查詢（query）與檢查（lint）都會在這裡留下一筆，只增不改。</p>
+    {% endif %}
+  </header>
+  <div class="prose prose-wide">
+    {{ body | safe }}
+  </div>
+</article>
+{% endblock %}

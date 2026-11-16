@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" role="img" aria-label="Agent 的組成：LLM 是大腦，配上規劃、記憶、工具三個零件">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow"/></marker><marker id="aro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-arrow-o"/></marker></defs>
+<path class="d-line" d="M290 85 L380 145"/>
+<path class="d-line" d="M290 255 L380 195"/>
+<path class="d-line" d="M580 170 L670 170"/>
+<rect class="d-accent" x="380" y="120" width="200" height="100" rx="14"/>
+<text class="d-w" x="480" y="165" style="font-size:24px">LLM</text>
+<text class="d-ws" x="480" y="193">大腦：理解、判斷、決定</text>
+<rect class="d-box" x="60" y="40" width="230" height="90" rx="12"/>
+<text class="d-t" x="175" y="80" style="font-size:20px">規劃</text>
+<text class="d-s" x="175" y="106">拆解任務・反思修正</text>
+<rect class="d-box" x="60" y="210" width="230" height="90" rx="12"/>
+<text class="d-t" x="175" y="250" style="font-size:20px">記憶</text>
+<text class="d-s" x="175" y="276">短期：上下文・長期：外部資料</text>
+<rect class="d-box" x="670" y="125" width="230" height="90" rx="12"/>
+<text class="d-t" x="785" y="165" style="font-size:20px">工具</text>
+<text class="d-s" x="785" y="191">查資料・執行程式・操作系統</text>
+</svg>

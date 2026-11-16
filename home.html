@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}{{ cfg.site_title }}：{{ cfg.tagline }}{% endblock %}
+{% block bodyclass %}is-home{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">LLM Wiki · AI Agents 入門</p>
+    <h1>{{ cfg.site_title }}</h1>
+    <p class="lead">{{ cfg.tagline }}</p>
+    <p class="hero-actions">
+      {% for d in decks %}
+      <a class="btn btn-primary" href="slides/{{ d.name }}/index.html">看教學簡報（{{ d.slides | length }} 張）</a>
+      {% endfor %}
+      <a class="btn" href="#path">從第一站開始讀</a>
+    </p>
+    <ul class="stats">
+      <li><strong>{{ counts.source }}</strong> 篇原始來源</li>
+      <li><strong>{{ counts.concept }}</strong> 個概念頁</li>
+      <li><strong>{{ counts.slides }}</strong> 張投影片</li>
+    </ul>
+  </div>
+  <figure class="hero-loop" aria-label="Agent 的運作循環：想、做、看">
+    <svg viewBox="0 0 320 320" role="img">
+      <circle cx="160" cy="160" r="118" class="loop-ring"/>
+      <path d="M160 42 A118 118 0 0 1 262 219" class="loop-arc"/>
+      <g class="loop-node"><circle cx="160" cy="42" r="34"/><text x="160" y="49">想</text></g>
+      <g class="loop-node"><circle cx="262" cy="219" r="34"/><text x="262" y="226">做</text></g>
+      <g class="loop-node"><circle cx="58" cy="219" r="34"/><text x="58" y="226">看</text></g>
+      <text x="160" y="155" class="loop-center">目標達成</text>
+      <text x="160" y="180" class="loop-center-sub">才停下來</text>
+    </svg>
+  </figure>
+</section>
+
+<section class="block" id="path">
+  <header class="block-head">
+    <h2>學習路徑</h2>
+    <p>照順序讀，每一站只講一件事。每頁底部都有「下一站」。</p>
+  </header>
+  <ol class="path">
+    {% for p in path %}
+    <li>
+      <a href="wiki/{{ p.slug }}.html">
+        <span class="path-no">{{ "%02d" | format(loop.index) }}</span>
+        <span class="path-title">{{ p.title }}</span>
+        <span class="path-sum">{{ p.meta.summary }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="block" id="concepts">
+  <header class="block-head">
+    <h2>依主題瀏覽</h2>
+    <p>所有概念頁，依主題分組。</p>
+  </header>
+  {% for g in groups %}
+  <div class="group">
+    <h3>{{ g.name }}<span>{{ g.blurb }}</span></h3>
+    <ul class="cards">
+      {% for p in g.pages %}
+      <li><a href="wiki/{{ p.slug }}.html"><strong>{{ p.title }}</strong><span>{{ p.meta.summary }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>
+
+<section class="block" id="sources">
+  <header class="block-head">
+    <h2>原始來源</h2>
+    <p>Wiki 的每個段落都只根據下面這些資料寫成。點進去可以看到重點摘要與原文連結。</p>
+  </header>
+  <ul class="source-list">
+    {% for s in sources %}
+    <li>
+      <span class="src-short">{{ s.meta.short }}</span>
+      <a href="wiki/{{ s.slug }}.html">{{ s.title }}</a>
+      <span class="muted">{{ s.meta.author }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="block" id="about">
+  <header class="block-head">
+    <h2>這個網站怎麼做出來的</h2>
+    <p>人負責挑資料、決定方向；AI 依照專案根目錄的 <code>AGENTS.md</code> 讀資料、寫 Wiki、跑檢查、產生簡報。</p>
+  </header>
+  <ul class="cards cards-meta">
+    {% for p in meta_pages %}
+    <li><a href="wiki/{{ p.slug }}.html"><strong>{{ p.title }}</strong><span>{{ p.meta.summary }}</span></a></li>
+    {% endfor %}
+    <li><a href="wiki/log.html"><strong>更新紀錄</strong><span>每一次讀入來源與檢查的時間軸。</span></a></li>
+  </ul>
+</section>
+{% endblock %}
